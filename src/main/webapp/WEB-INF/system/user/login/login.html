@@ -1,16 +1,31 @@
 <!DOCTYPE html>
+<html lang="en">
 <html>
 <head>
     <meta charset="utf-8">
     <title>Jianfeng's Blog</title>
-
     <link rel="stylesheet" href="${base!}/resources/login/css/reset.css"/>
-    <link rel="stylesheet" href="${base!}/resources/login/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="${base!}/resources/login/css/style.css"/>
+    <script src="${base!}/resources/login/js/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#toggle").click(function(){
+                $(':input','#form')
+                        .not(':button, :submit, :reset, :hidden')
+                        .val('')
+                        .removeAttr('checked')
+                        .removeAttr('selected');
+                $(':input','#form1')
+                        .not(':button, :submit, :reset, :hidden')
+                        .val('')
+                        .removeAttr('checked')
+                        .removeAttr('selected');
+            });
+        });
+    </script>
 </head>
 
 <body>
-
 
 <!-- Form Mixin-->
 <!-- Input Mixin-->
@@ -21,30 +36,30 @@
 </div>
 <!-- Form Module-->
 <div class="module form-module">
-    <div class="toggle"><i class="fa fa-times fa-pencil"></i>
-        <div class="tooltip">Click Me</div>
+    <div class="toggle" id="toggle"><i class="fa fa-times fa-pencil"></i>
+        <div class="tooltip" >Click Me</div>
     </div>
-    <div class="form">
+    <div class="form" id="form">
         <h2>登录</h2>
         <form>
-            <input type="id" placeholder="请输入你的用户名"/>
-            <input type="password" placeholder="请输入你的密码"/>
+            <input type="id" placeholder="请输入你的用户名" name="id" id="id"/>
+            <input type="password" placeholder="请输入你的密码" name="password" />
             <button>登录</button>
         </form>
     </div>
-    <div class="form">
+    <div class="form" id="form1">
         <h2>注册</h2>
         <form>
-            <input type="id" placeholder="请输入你的用户名"/>
-            <input type="password" placeholder="请输入你的密码"/>
-            <input type="name" placeholder="请输入你的名字"/>
-            <input type="email" placeholder="请输入你的email"/>
+            <input type="id" placeholder="请输入你的用户名" name="id" id="id1"/>
+            <input type="password" placeholder="请输入你的密码" name="password" id="password1"/>
+            <input type="name" placeholder="请输入你的名字" name="name" id="name1"/>
             <button>注册</button>
         </form>
     </div>
     <div class="cta"><a href="#">忘记密码?</a></div>
 </div>
-<script src="${base!}/resources/login/js/jquery.min.js"></script>
+
+
 <script src="${base!}/resources/login/js/index.js"></script>
 </body>
 </html>

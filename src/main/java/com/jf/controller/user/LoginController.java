@@ -21,12 +21,18 @@ public class LoginController {
 
     @RequestMapping("/login.do")
     public String login(HttpServletRequest request, ModelMap model, HttpServletResponse response) {
+        session = request.getSession();
+        if (session.getAttribute("id")!=null && session.getAttribute("id").equals("")==false){
+            return "redirect:";
+        }
         return "login/login";
     }
 
     @RequestMapping("logout.do")
     public String logout(HttpServletRequest request, ModelMap model, HttpServletResponse response) {
-        return "";
+        session.removeAttribute("id");
+        session.removeAttribute("type");
+        return "login/login";
     }
 
 }
