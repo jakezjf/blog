@@ -7,6 +7,7 @@
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>
+
       /WEB-INF/config/jf-admin-service.xml
       /WEB-INF/config/jf-user-service.xml
       /WEB-INF/config/database-context.xml
@@ -15,7 +16,7 @@
     </param-value>
   </context-param>
 
-  <!--filter拦截器-->
+  <!--filter拦截器 /WEB-INF/config/jcaptcha-context.xml-->
   <filter>
     <filter-name>encoding</filter-name>
     <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -45,10 +46,6 @@
     <url-pattern>*.js</url-pattern>
   </filter-mapping>
 
-  <!--Spring 容器启动监听器-->
-  <listener>
-    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-  </listener>
 
   <servlet>
     <servlet-name>DzzqCmsAdmin</servlet-name>
@@ -63,6 +60,24 @@
     <servlet-name>DzzqCmsAdmin</servlet-name>
     <url-pattern>*.do</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>DZZQcaptcha</servlet-name>
+    <servlet-class>com.jf.common.jcaptcha.JcaptchaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DZZQcaptcha</servlet-name>
+    <url-pattern>/jcaptcha.jct</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DzzqCmsAdmin</servlet-name>
+    <url-pattern>/dwr/*</url-pattern>
+  </servlet-mapping>
+
+
+  <!--Spring 容器启动监听器-->
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
 
 
   <!--设置首页-->

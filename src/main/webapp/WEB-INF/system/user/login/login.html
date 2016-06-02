@@ -43,6 +43,8 @@
         <form>
             <input type="id" placeholder="请输入你的用户名" name="id" id="id"/>
             <input type="password" placeholder="请输入你的密码" name="password" />
+            <input type="text" name="captcha" class="captcha" placeholder="验证码">
+            <img src="${base}/jcaptcha.jct" onclick="this.src='${base}/jcaptcha.jct?d='+new Date()"/>
             <button>登录</button>
         </form>
     </div>
