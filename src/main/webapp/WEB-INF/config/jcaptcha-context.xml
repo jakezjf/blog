@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://www.springframework.org/schema/beans"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
-	default-lazy-init="true">
+	   xmlns="http://www.springframework.org/schema/beans"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+	   default-lazy-init="true">
 
 	<!-- 总入口 -->
 	<bean id="captchaService"
-		class="com.octo.captcha.service.multitype.GenericManageableCaptchaService">
+		  class="com.octo.captcha.service.multitype.GenericManageableCaptchaService">
 		<constructor-arg index="0" ref="imageEngine" />
 		<constructor-arg type="int" index="1" value="180" />
 		<constructor-arg type="int" index="2" value="100000" />
@@ -32,7 +32,7 @@
 	</bean>
 
 	<bean id="wordgen"
-		class="com.octo.captcha.component.word.wordgenerator.RandomWordGenerator">
+		  class="com.octo.captcha.component.word.wordgenerator.RandomWordGenerator">
 		<description>文字产生器</description>
 		<!--可选字符 -->
 		<constructor-arg>
@@ -40,7 +40,7 @@
 		</constructor-arg>
 	</bean>
 	<bean id="wordtoimage"
-		class="com.octo.captcha.component.image.wordtoimage.ComposedWordToImage">
+		  class="com.octo.captcha.component.image.wordtoimage.ComposedWordToImage">
 		<description>图片生成器</description>
 		<constructor-arg index="0">
 			<ref bean="fontGenRandom" />
@@ -54,7 +54,7 @@
 	</bean>
 
 	<bean id="fontGenRandom"
-		class="com.octo.captcha.component.image.fontgenerator.RandomFontGenerator">
+		  class="com.octo.captcha.component.image.fontgenerator.RandomFontGenerator">
 		<!--最小字体 -->
 		<constructor-arg index="0">
 			<value>20</value>
@@ -81,7 +81,7 @@
 		</constructor-arg>
 	</bean>
 	<bean id="backGenUni"
-		class="com.octo.captcha.component.image.backgroundgenerator.UniColorBackgroundGenerator">
+		  class="com.octo.captcha.component.image.backgroundgenerator.UniColorBackgroundGenerator">
 		<!--背景图片宽度 -->
 		<constructor-arg index="0">
 			<value>110</value>
@@ -93,7 +93,7 @@
 	</bean>
 
 	<bean id="decoratedPaster"
-		class="com.octo.captcha.component.image.textpaster.DecoratedRandomTextPaster">
+		  class="com.octo.captcha.component.image.textpaster.DecoratedRandomTextPaster">
 		<!--最大字符长度 -->
 		<constructor-arg type="java.lang.Integer" index="0">
 			<value>3</value>
@@ -115,7 +115,7 @@
 	</bean>
 	<!-- 背景颜色 -->
 	<bean id="baffleDecorator"
-		class="com.octo.captcha.component.image.textpaster.textdecorator.BaffleTextDecorator">
+		  class="com.octo.captcha.component.image.textpaster.textdecorator.BaffleTextDecorator">
 		<constructor-arg type="java.lang.Integer" index="0">
 			<value>1</value>
 		</constructor-arg>
@@ -125,7 +125,7 @@
 	</bean>
 	<!-- 文字颜色黑色 -->
 	<bean id="colorGen"
-		class="com.octo.captcha.component.image.color.SingleColorGenerator">
+		  class="com.octo.captcha.component.image.color.SingleColorGenerator">
 		<constructor-arg type="java.awt.Color" index="0">
 			<ref bean="colorBlack" />
 		</constructor-arg>
