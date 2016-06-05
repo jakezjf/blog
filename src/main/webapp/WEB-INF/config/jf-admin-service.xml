@@ -13,7 +13,7 @@
        default-autowire="byName">
 
     <!-- (Annotation方式配置services)enable component scanning (beware that this does not enable mapper scanning!) -->
-    <context:component-scan base-package="com.jf.service">
+    <context:component-scan base-package="com.jf">
         <context:exclude-filter type="annotation"
                                 expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>

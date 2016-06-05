@@ -51,14 +51,24 @@
 
 
   <servlet>
+  <servlet-name>DzzqCmsUser</servlet-name>
+  <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  <init-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>/WEB-INF/config/jf-user-servlet.xml</param-value>
+  </init-param>
+  <load-on-startup>1</load-on-startup>
+</servlet>
+  <servlet>
     <servlet-name>DzzqCmsAdmin</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
     <init-param>
       <param-name>contextConfigLocation</param-name>
-      <param-value>/WEB-INF/config/jf-user-servlet.xml</param-value>
+      <param-value>/WEB-INF/config/jf-admin-servlet.xml</param-value>
     </init-param>
-    <load-on-startup>1</load-on-startup>
+    <load-on-startup>2</load-on-startup>
   </servlet>
+
   <servlet>
     <servlet-name>redis</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -66,7 +76,7 @@
       <param-name>contextConfigLocation</param-name>
       <param-value>/WEB-INF/config/redis-context.xml</param-value>
     </init-param>
-    <load-on-startup>2</load-on-startup>
+    <load-on-startup>3</load-on-startup>
   </servlet>
   <!--<servlet>
     <servlet-name>jcaptcha</servlet-name>
@@ -80,6 +90,10 @@
   <servlet-mapping>
     <servlet-name>redis</servlet-name>
     <url-pattern>*.re</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DzzqCmsUser</servlet-name>
+    <url-pattern>*.jhtml</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>DzzqCmsAdmin</servlet-name>
