@@ -36,7 +36,7 @@
 		<description>文字产生器</description>
 		<!--可选字符 -->
 		<constructor-arg>
-			<value>1234567890abcdefghkmnopqstuvwxyz</value>
+			<value>abcdefghkmnopqstuvwxyz</value>
 		</constructor-arg>
 	</bean>
 	<bean id="wordtoimage"

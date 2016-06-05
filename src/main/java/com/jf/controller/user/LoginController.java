@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import redis.clients.jedis.Jedis;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,7 +18,9 @@ import javax.servlet.http.HttpSession;
 public class LoginController {
 
     @Autowired
-    public HttpSession session;
+    private HttpSession session;
+
+
 
     @RequestMapping("/login.do")
     public String login(HttpServletRequest request, ModelMap model, HttpServletResponse response) {

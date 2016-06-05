@@ -8,11 +8,13 @@
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>
-      /WEB-INF/config/jcaptcha-context.xml
+      <!--/WEB-INF/config/jcaptcha-context.xml -->
       classpath:applicationContext.xml
       /WEB-INF/config/jf-admin-service.xml
       /WEB-INF/config/jf-user-service.xml
       /WEB-INF/config/database-context.xml
+      /WEB-INF/config/jf-admin-servlet.xml
+      /WEB-INF/config/jf-user-servlet.xml
     </param-value>
   </context-param>
 
@@ -55,23 +57,33 @@
       <param-name>contextConfigLocation</param-name>
       <param-value>/WEB-INF/config/jf-user-servlet.xml</param-value>
     </init-param>
-    <init-param>
-      <param-name>contextConfigLocation</param-name>
-      <param-value>/WEB-INF/config/jf-admin-servlet.xml</param-value>
-    </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
-  <servlet-mapping>
-    <servlet-name>DzzqCmsAdmin</servlet-name>
-    <url-pattern>*.do</url-pattern>
-  </servlet-mapping>
   <servlet>
-    <servlet-name>DZZQcaptcha</servlet-name>
+    <servlet-name>redis</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>/WEB-INF/config/redis-context.xml</param-value>
+    </init-param>
+    <load-on-startup>2</load-on-startup>
+  </servlet>
+  <!--<servlet>
+    <servlet-name>jcaptcha</servlet-name>
     <servlet-class>com.jf.common.jcaptcha.JcaptchaServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>DZZQcaptcha</servlet-name>
+    <servlet-name>jcaptcha</servlet-name>
     <url-pattern>/jcaptcha.jct</url-pattern>
+  </servlet-mapping>
+-->
+  <servlet-mapping>
+    <servlet-name>redis</servlet-name>
+    <url-pattern>*.re</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DzzqCmsAdmin</servlet-name>
+    <url-pattern>*.do</url-pattern>
   </servlet-mapping>
 
   <!-- Spring 容器加载 -->

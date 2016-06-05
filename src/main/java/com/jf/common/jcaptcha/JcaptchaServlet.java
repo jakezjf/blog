@@ -20,7 +20,7 @@ import com.octo.captcha.service.CaptchaServiceException;
 import com.octo.captcha.service.image.ImageCaptchaService;
 
 /**
- * Created by JF on 2016/6/1.
+ * Created by JF on 2016/5/30.
  */
 
 @SuppressWarnings("serial")
@@ -34,7 +34,6 @@ public class JcaptchaServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("sadasdsadasdsaadasdasdasdad");
         byte[] captchaChallengeAsJpeg = null;
         // the output stream to render the captcha image as jpeg into
         ByteArrayOutputStream jpegOutputStream = new ByteArrayOutputStream();
