@@ -20,9 +20,7 @@ public class LoginController {
     @Autowired
     private HttpSession session;
 
-
-
-    @RequestMapping("/login.do")
+    @RequestMapping("/login.jhtml")
     public String login(HttpServletRequest request, ModelMap model, HttpServletResponse response) {
         session = request.getSession();
         if (session.getAttribute("id")!=null && session.getAttribute("id").equals("")==false){
@@ -31,7 +29,7 @@ public class LoginController {
         return "login/login";
     }
 
-    @RequestMapping("logout.do")
+    @RequestMapping("logout.jhtml")
     public String logout(HttpServletRequest request, ModelMap model, HttpServletResponse response) {
         session.removeAttribute("id");
         session.removeAttribute("type");

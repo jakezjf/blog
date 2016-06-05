@@ -6,6 +6,9 @@ import com.jf.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import redis.clients.jedis.ShardedJedis;
+import redis.clients.jedis.ShardedJedisPool;
+
 
 /**
  * Created by JF on 2016/6/1.
@@ -22,7 +25,9 @@ public class UserServiceImpl implements UserService {
     }
 
     public void insert(User user) {
-        userMapper.insert(user);
+//        ShardedJedis jedis =  shardedJedisPool.getResource();
+//        jedis.set(user.getUserId(),user.getUserName());
+      //  userMapper.insert(user);
     }
 
     public void update(User user) {
