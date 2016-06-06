@@ -15,12 +15,14 @@
     <!-- 添加注解驱动 -->
     <mvc:annotation-driven/>
     <bean id="propertyConfigurer"
-          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" >
         <property name="locations">
             <list>
                 <value>/WEB-INF/config/jdbc.properties</value>
             </list>
         </property>
+        <property name="ignoreUnresolvablePlaceholders" value="true" />
+        <!-- 使用PropertyPlaceholderConfigurer多个 必须设置ignoreUnresolvablePlaceholders-->
     </bean>
 
     <!-- JNDI获取数据源(使用c3p0连接池)  destroy-method="close" -->

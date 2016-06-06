@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
  */
 @Controller
 @RequestMapping("/login")
-public class LoginController {
+public class LoginUserController {
 
     @Autowired
     private HttpSession session;

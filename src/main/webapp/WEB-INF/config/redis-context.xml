@@ -9,21 +9,20 @@
       http://www.springframework.org/schema/context/spring-context-3.0.xsd
          ">
 
-    <!-- scanner redis properties
-    <context:property-placeholder location="/redis.properties" />-->
-    <context:component-scan base-package="com.jf">
-    </context:component-scan>
+    <!-- scanner redis properties-->
+    <context:property-placeholder location="/WEB-INF/config/redis.properties" ignore-unresolvable="true"  />
+    <context:component-scan base-package="com.jf"/>
     <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
-        <property name="maxIdle" value="300" />
-        <property name="maxTotal" value="700" />
-        <property name="maxWaitMillis" value="1000" />
-        <property name="testOnBorrow" value="true" />
+        <property name="maxIdle" value="${redis.maxIdle}" />
+        <property name="maxTotal" value="${redis.maxTotal}" />
+        <property name="maxWaitMillis" value="${redis.maxWaitMillis}" />
+        <property name="testOnBorrow" value="${redis.testOnBorrow}" />
     </bean>
 
     <bean id="connectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
-          p:hostName="127.0.0.1"
-          p:port="6379"
-          p:password=""
+          p:hostName="${redis.host}"
+          p:port="${redis.port}"
+          p:password="${redis.pass}"
           p:poolConfig-ref="poolConfig"/>
 
     <bean id = "redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">

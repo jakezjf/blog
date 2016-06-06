@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Controller
 @RequestMapping("/user")
-public class UserController {
+public class UserAdminController {
 
     @Autowired
     private UserService userService;

@@ -1,4 +1,4 @@
-package com.jf.controller;
+package com.jf.controller.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
  */
 @Controller
 @RequestMapping("index")
-public class IndexController {
+public class IndexUserController {
 
     @Autowired
     private HttpSession session;
