@@ -22,10 +22,10 @@
         <setting name="defaultStatementTimeout" value="25000"/>
     </settings>
     <typeAliases>
-        <!-- <typeAlias alias="JFUser" type="com.jf.model.JFUser" />-->
+        <typeAlias alias="User" type="com.jf.model.User" />
     </typeAliases>
 
     <mappers>
-        <!--<mapper resource="com/jf/xml/JFUserMapper.xml" />-->
+        <mapper resource="com/jf/xml/UserMapper.xml" />
     </mappers>
 </configuration>

@@ -11,7 +11,7 @@
                         http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
     <!-- 扫描com.hf包里下的所有class文件，配置注解的类全都装入容器中进行管理 -->
-    <context:component-scan base-package="com.jf.controller"/>
+    <context:component-scan base-package="com.jf"/>
     <!-- 添加注解驱动 -->
     <mvc:annotation-driven/>
     <bean id="propertyConfigurer"
