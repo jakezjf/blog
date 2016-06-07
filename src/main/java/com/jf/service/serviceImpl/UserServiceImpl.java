@@ -6,6 +6,7 @@ import com.jf.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;
+import org.springframework.data.redis.core.ListOperations;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
@@ -23,11 +24,26 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     protected RedisTemplate<Serializable, Serializable> redisTemplate;
+
+//    @Autowired
+//    private ListOperations<String, String> listOps;
+
     @Autowired
     private UserMapper userMapper;
 
-    public User getUser(User user) {
-        return userMapper.getUser(user);
+    public User getUser(final User user) {
+        return redisTemplate.execute(new RedisCallback<User>() {
+            public User doInRedis(RedisConnection redisConnection) throws DataAccessException {
+                byte[] key = redisTemplate.getStringSerializer().serialize(user.getUserId());
+                if (redisConnection.exists(key)){
+                    byte[] value = redisConnection.get(key);
+                    String userName = redisTemplate.getStringSerializer().deserialize(value);
+
+                }
+                return null;
+            }
+        });
+//        return userMapper.getUser(user);
     }
 
     public void insert(final User user) {
@@ -38,13 +54,17 @@ public class UserServiceImpl implements UserService {
                 return null;
             }
         });
-
-//        ShardedJedis jedis =  shardedJedisPool.getResource();
-//        jedis.set(user.getUserId(),user.getUserName());
-      //  userMapper.insert(user);
+        userMapper.insert(user);
     }
 
-    public void update(User user) {
+    public void update(final User user) {
+        redisTemplate.execute(new RedisCallback<Object>() {
+            public Object doInRedis(RedisConnection redisConnection) throws DataAccessException {
+                redisConnection.set(redisTemplate.getStringSerializer().serialize(user.getUserId()),
+                        redisTemplate.getStringSerializer().serialize(user.getUserName()));
+                return null;
+            }
+        });
         userMapper.update(user);
     }
 
