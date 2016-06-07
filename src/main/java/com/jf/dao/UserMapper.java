@@ -33,4 +33,7 @@ public interface UserMapper {
     void update(User user);
 
     void delete(@Param("userId") String id);
+
+    List<User> getUserList(User user);
+
 }
