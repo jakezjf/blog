@@ -1,5 +1,6 @@
 package com.jf.service;
 
+import com.jf.common.page.PagedResult;
 import com.jf.model.User;
 
 /**
@@ -13,5 +14,7 @@ public interface UserService {
 
     void update(User user);
 
-    void delete(String id);
+    void delete(User user);
+
+    PagedResult<User> getUsers(User user,Integer pageNo,Integer pageSize);
 }

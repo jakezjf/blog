@@ -194,7 +194,8 @@
     where user_id = #{userId,jdbcType=VARCHAR}
   </update>
 
-  <!--JF-->
+  <!--jianfeng -->
+
 
   <update id="update" parameterType="com.jf.model.User" >
     update user
@@ -212,27 +213,55 @@
     where user_id = #{userId,jdbcType=VARCHAR}
   </update>
 
-  <delete id="delete" parameterType="java.lang.String" >
-    delete from user
-    where user_id = #{userId,jdbcType=VARCHAR}
-  </delete>
-
-  <select id="getUser" resultMap="BaseResultMap" parameterType="com.jf.model.User" >
-    select
-    <include refid="Base_Column_List" />
+  <select id="getUser" parameterType="com.jf.model.User" resultType="com.jf.model.User">
+    select user_id,user_password,user_name,user_type
     from user where 1=1
-    <if test="userId != null and userId!='' " >
+    <if test="userId != null" >
       and user_id = #{userId,jdbcType=VARCHAR}
     </if>
-    <if test="userPassword != null and userPassword!='' " >
+    <if test="userPassword != null" >
       and user_password = #{userPassword,jdbcType=VARCHAR}
     </if>
-    <if test="userName != null and userName!='' " >
+    <if test="userName != null" >
       and user_name = #{userName,jdbcType=VARCHAR}
     </if>
-    <if test="userType != null and userType!='' " >
-      and user_type = #{userType,jdbcType=VARCHAR}
+    <if test="userType != null" >
+      and user_type = #{userType,jdbcType=INTEGER}
     </if>
   </select>
+
+  <delete id="delete" parameterType="com.jf.model.User" >
+    delete from user where 1=1
+    <if test="userId != null" >
+      and user_id = #{userId,jdbcType=VARCHAR}
+    </if>
+    <if test="userPassword != null" >
+      and user_password = #{userPassword,jdbcType=VARCHAR}
+    </if>
+    <if test="userName != null" >
+      and user_name = #{userName,jdbcType=VARCHAR}
+    </if>
+    <if test="userType != null" >
+      and user_type = #{userType,jdbcType=INTEGER}
+    </if>
+  </delete>
+
+  <select id="getPageList" parameterType="com.jf.model.User" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from user where 1=1
+    <if test="userId != null" >
+      and user_id = #{userId,jdbcType=VARCHAR}
+    </if>
+    <if test="userPassword != null" >
+      and user_password = #{userPassword,jdbcType=VARCHAR}
+    </if>
+    <if test="userName != null" >
+      and user_name = #{userName,jdbcType=VARCHAR}
+    </if>
+    <if test="userType != null" >
+      and user_type = #{userType,jdbcType=INTEGER}
+    </if>
+  </select>
+
 
 </mapper>

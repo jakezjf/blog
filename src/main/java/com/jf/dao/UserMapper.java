@@ -32,8 +32,8 @@ public interface UserMapper {
 
     void update(User user);
 
-    void delete(@Param("userId") String id);
+    void delete(User user);
 
-    List<User> getUserList(User user);
+    List<User> getPageList(User user);
 
 }

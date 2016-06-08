@@ -28,15 +28,5 @@ public interface BookMapper {
 
     int updateByPrimaryKey(Book record);
 
-    void update(Book book);
 
-    void delete(Book book);
-
-    Book getBook(Book book);
-
-    Book getBookId(int bookId);
-
-    List<Book> getBooks();
-
-    List<Book> getBooksAll(Book book);
 }

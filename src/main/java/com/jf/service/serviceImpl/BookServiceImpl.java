@@ -1,5 +1,6 @@
 package com.jf.service.serviceImpl;
 
+import com.jf.dao.BookTypeMapper;
 import com.jf.model.Book;
 import com.jf.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,8 @@ import java.util.List;
 @Transactional
 public class BookServiceImpl implements BookService {
 
-//    @Autowired   不能注入
-//    private SetOperations<String,Object> setOperations;
+    @Autowired
+    private BookTypeMapper bookTypeMapper;
 
 
     public void insert(Book book) {

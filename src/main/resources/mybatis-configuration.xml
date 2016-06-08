@@ -3,8 +3,6 @@
 <!DOCTYPE configuration
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
-
-
 <configuration>
     <settings>
         <!-- 全局的映射器启用或禁用缓存。 -->
@@ -22,9 +20,16 @@
         <!-- 设置超时时间 -->
         <setting name="defaultStatementTimeout" value="25000"/>
     </settings>
+
     <typeAliases>
-        <typeAlias alias="User" type="com.jf.model.User" />
+        <typeAlias type="com.jf.model.User" alias="User"/>
+        <typeAlias type="com.jf.model.UserExample" alias="UserExample"/>
+        <typeAlias type="com.jf.model.Book" alias="Book"/>
+        <typeAlias type="com.jf.model.BookExample" alias="BookExample"/>
+        <typeAlias type="com.jf.model.BookType" alias="BookType"/>
+        <typeAlias type="com.jf.model.BookTypeExample" alias="BookTypeExample"/>
     </typeAliases>
+
     <plugins>
         <!-- com.github.pagehelper为PageHelper类所在包名 -->
         <plugin interceptor="com.github.pagehelper.PageHelper">
@@ -50,9 +55,10 @@
             <property name="params" value="pageNum=start;pageSize=limit;"/>
         </plugin>
     </plugins>
-
     <mappers>
-        <mapper resource="com/jf/xml/UserMapper.xml" />
+        <mapper resource="com\jf\xml\UserMapper.xml"/>
+        <mapper resource="com\jf\xml\BookMapper.xml" />
+        <mapper resource="com\jf\xml\BookTypeMapper.xml"/>
     </mappers>
 
 
