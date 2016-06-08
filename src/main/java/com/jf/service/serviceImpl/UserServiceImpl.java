@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.jf.common.page.BeanUtil;
 import com.jf.common.page.PagedResult;
 import com.jf.dao.UserMapper;
+import com.jf.dao.UserRedis;
 import com.jf.model.User;
 import com.jf.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,8 @@ public class UserServiceImpl implements UserService {
 //    @Autowired
 //    private ListOperations<String, String> listOps;
 
-    
+    @Autowired
+    private UserRedis userRedis;
 
     @Autowired
     private UserMapper userMapper;
