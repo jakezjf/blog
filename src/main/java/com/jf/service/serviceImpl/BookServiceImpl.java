@@ -38,14 +38,14 @@ public class BookServiceImpl implements BookService {
         return bookMapper.getBook(book);
     }
 
-    public Book getBookId(int bookId) {
-        return null;
-    }
-
     public List<Book> getBooks() {
         return null;
     }
 
+    public Book getBookId(int bookId) {
+        return null;
+    }
+    
     public List<Book> getBooksAll(Book book) {
         return bookMapper.getBookAll(book);
     }
