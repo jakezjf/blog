@@ -32,9 +32,6 @@ public class UserServiceImpl implements UserService {
 //    private ListOperations<String, String> listOps;
 
     @Autowired
-    private UserRedis userRedis;
-
-    @Autowired
     private UserMapper userMapper;
 
     public User getUser(final User user) {

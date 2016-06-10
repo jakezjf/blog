@@ -1,6 +1,6 @@
 package com.jf.service.serviceImpl;
 
-import com.jf.dao.BookTypeMapper;
+import com.jf.dao.BookMapper;
 import com.jf.model.Book;
 import com.jf.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,23 +19,23 @@ import java.util.List;
 public class BookServiceImpl implements BookService {
 
     @Autowired
-    private BookTypeMapper bookTypeMapper;
+    private BookMapper bookMapper;
 
 
     public void insert(Book book) {
-
+        bookMapper.insert(book);
     }
 
     public void update(Book book) {
-
+        bookMapper.update(book);
     }
 
     public void delete(Book book) {
-
+        bookMapper.delete(book);
     }
 
     public Book getBook(Book book) {
-        return null;
+        return bookMapper.getBook(book);
     }
 
     public Book getBookId(int bookId) {
@@ -47,6 +47,6 @@ public class BookServiceImpl implements BookService {
     }
 
     public List<Book> getBooksAll(Book book) {
-        return null;
+        return bookMapper.getBookAll(book);
     }
 }
