@@ -214,9 +214,9 @@
   </update>
 
   <select id="getUser" parameterType="com.jf.model.User" resultType="com.jf.model.User">
-    select user_id,user_password,user_name,user_type
+    select <include refid="Base_Column_List" />
     from user where 1=1
-    <if test="userId != null" >
+    <if test="userId != null and userId!='' " >
       and user_id = #{userId,jdbcType=VARCHAR}
     </if>
     <if test="userPassword != null" >

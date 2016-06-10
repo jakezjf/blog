@@ -35,4 +35,6 @@ public interface BookMapper {
     List<Book> getBookAll(Book book);
 
     void delete(Book book);
+
+    List<Book> getBooks();
 }

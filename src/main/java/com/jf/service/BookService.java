@@ -17,8 +17,6 @@ public interface BookService {
 
     Book getBook(Book book);
 
-    Book getBookId(int bookId);
-
     List<Book> getBooks();
 
     List<Book> getBooksAll(Book book);

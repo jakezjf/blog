@@ -21,7 +21,6 @@ public class BookServiceImpl implements BookService {
     @Autowired
     private BookMapper bookMapper;
 
-
     public void insert(Book book) {
         bookMapper.insert(book);
     }
@@ -39,13 +38,9 @@ public class BookServiceImpl implements BookService {
     }
 
     public List<Book> getBooks() {
-        return null;
+        return bookMapper.getBooks();
     }
 
-    public Book getBookId(int bookId) {
-        return null;
-    }
-    
     public List<Book> getBooksAll(Book book) {
         return bookMapper.getBookAll(book);
     }

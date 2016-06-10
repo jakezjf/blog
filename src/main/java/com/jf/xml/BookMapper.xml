@@ -303,4 +303,161 @@
       back4 = #{back4,jdbcType=VARCHAR}
     where book_id = #{bookId,jdbcType=INTEGER}
   </update>
+  <select id="getBooks" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from book
+  </select>
+  <delete id="delete" parameterType="com.jf.model.Book" >
+    delete from book
+    where 1=1
+    <if test="bookId != null" >
+      and book_id = #{bookId,jdbcType=INTEGER}
+    </if>
+    <if test="bookName != null" >
+      and book_name = #{bookName,jdbcType=VARCHAR}
+    </if>
+    <if test="bookAuthor != null" >
+      and book_author = #{bookAuthor,jdbcType=VARCHAR}
+    </if>
+    <if test="bookType != null" >
+      and book_type = #{bookType,jdbcType=INTEGER}
+    </if>
+    <if test="bookInfo != null" >
+      and book_info = #{bookInfo,jdbcType=VARCHAR}
+    </if>
+    <if test="addTime != null" >
+      and add_time = #{addTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="good != null" >
+      and good = #{good,jdbcType=INTEGER}
+    </if>
+    <if test="back1 != null" >
+      and back1 = #{back1,jdbcType=VARCHAR}
+    </if>
+    <if test="back2 != null" >
+      and back2 = #{back2,jdbcType=VARCHAR}
+    </if>
+    <if test="back3 != null" >
+      and back3 = #{back3,jdbcType=VARCHAR}
+    </if>
+    <if test="back4 != null" >
+      and back4 = #{back4,jdbcType=VARCHAR}
+    </if>
+  </delete>
+
+  <select id="getBookAll" resultMap="BaseResultMap" parameterType="com.jf.model.Book" >
+    select
+    <include refid="Base_Column_List" />
+    from book where 1=1
+    <if test="bookId != null" >
+      and book_id = #{bookId,jdbcType=INTEGER}
+    </if>
+    <if test="bookName != null" >
+      and book_name = #{bookName,jdbcType=VARCHAR}
+    </if>
+    <if test="bookAuthor != null" >
+      and book_author = #{bookAuthor,jdbcType=VARCHAR}
+    </if>
+    <if test="bookType != null" >
+      and book_type = #{bookType,jdbcType=INTEGER}
+    </if>
+    <if test="bookInfo != null" >
+      and book_info = #{bookInfo,jdbcType=VARCHAR}
+    </if>
+    <if test="addTime != null" >
+      and add_time = #{addTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="good != null" >
+      and good = #{good,jdbcType=INTEGER}
+    </if>
+    <if test="back1 != null" >
+      and back1 = #{back1,jdbcType=VARCHAR}
+    </if>
+    <if test="back2 != null" >
+      and back2 = #{back2,jdbcType=VARCHAR}
+    </if>
+    <if test="back3 != null" >
+      and back3 = #{back3,jdbcType=VARCHAR}
+    </if>
+    <if test="back4 != null" >
+      and back4 = #{back4,jdbcType=VARCHAR}
+    </if>
+  </select>
+
+  <select id="getBook" resultType="com.jf.model.Book" parameterType="com.jf.model.Book" >
+    select
+    <include refid="Base_Column_List" />
+    from book where 1=1
+    <if test="bookId != null" >
+      and book_id = #{bookId,jdbcType=INTEGER}
+    </if>
+    <if test="bookName != null" >
+      and book_name = #{bookName,jdbcType=VARCHAR}
+    </if>
+    <if test="bookAuthor != null" >
+      and book_author = #{bookAuthor,jdbcType=VARCHAR}
+    </if>
+    <if test="bookType != null" >
+      and book_type = #{bookType,jdbcType=INTEGER}
+    </if>
+    <if test="bookInfo != null" >
+      and book_info = #{bookInfo,jdbcType=VARCHAR}
+    </if>
+    <if test="addTime != null" >
+      and add_time = #{addTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="good != null" >
+      and good = #{good,jdbcType=INTEGER}
+    </if>
+    <if test="back1 != null" >
+      and back1 = #{back1,jdbcType=VARCHAR}
+    </if>
+    <if test="back2 != null" >
+      and back2 = #{back2,jdbcType=VARCHAR}
+    </if>
+    <if test="back3 != null" >
+      and back3 = #{back3,jdbcType=VARCHAR}
+    </if>
+    <if test="back4 != null" >
+      and back4 = #{back4,jdbcType=VARCHAR}
+    </if>
+  </select>
+
+  <update id="update" parameterType="com.jf.model.Book" >
+    update book
+    <set >
+      <if test="bookName != null" >
+        book_name = #{bookName,jdbcType=VARCHAR},
+      </if>
+      <if test="bookAuthor != null" >
+        book_author = #{bookAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="bookType != null" >
+        book_type = #{bookType,jdbcType=INTEGER},
+      </if>
+      <if test="bookInfo != null" >
+        book_info = #{bookInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null" >
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="good != null" >
+        good = #{good,jdbcType=INTEGER},
+      </if>
+      <if test="back1 != null" >
+        back1 = #{back1,jdbcType=VARCHAR},
+      </if>
+      <if test="back2 != null" >
+        back2 = #{back2,jdbcType=VARCHAR},
+      </if>
+      <if test="back3 != null" >
+        back3 = #{back3,jdbcType=VARCHAR},
+      </if>
+      <if test="back4 != null" >
+        back4 = #{back4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where book_id = #{bookId,jdbcType=INTEGER}
+  </update>
 </mapper>

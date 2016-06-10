@@ -10,7 +10,6 @@
 		<constructor-arg index="0" ref="imageEngine" />
 		<constructor-arg type="int" index="1" value="180" />
 		<constructor-arg type="int" index="2" value="100000" />
-		<constructor-arg type="int" index="3" value="75000" />
 	</bean>
 	<bean id="imageEngine" class="com.octo.captcha.engine.GenericCaptchaEngine">
 		<description>图片引擎</description>

@@ -10,13 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.io.output.ByteArrayOutputStream;
-import org.springframework.beans.factory.BeanFactoryUtils;
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.support.WebApplicationContextUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import com.jf.common.session.SessionProvider;
-import com.octo.captcha.service.CaptchaServiceException;
 import com.octo.captcha.service.image.ImageCaptchaService;
 
 /**
@@ -26,58 +22,31 @@ import com.octo.captcha.service.image.ImageCaptchaService;
 @SuppressWarnings("serial")
 public class JcaptchaServlet extends HttpServlet {
 
-    public static final String CAPTCHA_IMAGE_FORMAT = "jpeg";
+    private Logger logger = LoggerFactory.getLogger(getClass());
 
-    private ImageCaptchaService captchaService;
-
-    private SessionProvider session;
+    private ImageCaptchaService imageCaptchaService;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        byte[] captchaChallengeAsJpeg = null;
-        // the output stream to render the captcha image as jpeg into
-        ByteArrayOutputStream jpegOutputStream = new ByteArrayOutputStream();
         try {
-            // get the session id that will identify the generated captcha.
-            // the same id must be used to validate the response, the session id
-            // is a good candidate!
+            java.io.ByteArrayOutputStream jpegOutputStream = new java.io.ByteArrayOutputStream();
+            String captchaId = request.getSession().getId();
+            BufferedImage challenge = imageCaptchaService.getImageChallengeForID(captchaId, request.getLocale());
 
-            String captchaId = this.session.getSessionId(request, response);
-            BufferedImage challenge = this.captchaService.getImageChallengeForID(captchaId, request.getLocale());
-            // Jimi.putImage("image/jpeg", challenge, jpegOutputStream);
-            ImageIO.write(challenge, JcaptchaServlet.CAPTCHA_IMAGE_FORMAT, jpegOutputStream);
+            response.setHeader("Cache-Control", "no-store");
+            response.setHeader("Pragma", "no-cache");
+            response.setDateHeader("Expires", 0L);
+            response.setContentType("image/jpeg");
+
+            ImageIO.write(challenge, "jpeg", jpegOutputStream);
+            byte[] captchaChallengeAsJpeg = jpegOutputStream.toByteArray();
+
+            ServletOutputStream respOs = response.getOutputStream();
+            respOs.write(captchaChallengeAsJpeg);
+            respOs.flush();
+            respOs.close();
+        } catch (IOException e) {
+            logger.error("generate captcha image error: {}", e.getMessage());
         }
-        catch (IllegalArgumentException e) {
-            response.sendError(HttpServletResponse.SC_NOT_FOUND);
-            return;
-        }
-        catch (CaptchaServiceException e) {
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            return;
-        }
-        // catch (JimiException e) {
-        // response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-        // return;
-        // }
-
-        captchaChallengeAsJpeg = jpegOutputStream.toByteArray();
-
-        // flush it in the response
-        response.setHeader("Cache-Control", "no-store");
-        response.setHeader("Pragma", "no-cache");
-        response.setDateHeader("Expires", 0);
-        response.setContentType("image/" + JcaptchaServlet.CAPTCHA_IMAGE_FORMAT);
-
-        ServletOutputStream responseOutputStream = response.getOutputStream();
-        responseOutputStream.write(captchaChallengeAsJpeg);
-        responseOutputStream.flush();
-        responseOutputStream.close();
-    }
-
-    @Override
-    public void init() throws ServletException {
-        WebApplicationContext appCtx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
-        this.captchaService = BeanFactoryUtils.beanOfTypeIncludingAncestors(appCtx, ImageCaptchaService.class);
-        this.session = BeanFactoryUtils.beanOfTypeIncludingAncestors(appCtx, SessionProvider.class);
     }
 }

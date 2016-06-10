@@ -56,11 +56,10 @@
         </plugin>
     </plugins>
     <mappers>
-        <mapper resource="com\jf\xml\UserMapper.xml"/>
-        <mapper resource="com\jf\xml\BookMapper.xml" />
-        <mapper resource="com\jf\xml\BookTypeMapper.xml"/>
+        <mapper resource="com/jf/xml/UserMapper.xml"/>
+        <mapper resource="com/jf/xml/BookMapper.xml" />
+        <mapper resource="com/jf/xml/BookTypeMapper.xml"/>
     </mappers>
-
 
 
 </configuration>

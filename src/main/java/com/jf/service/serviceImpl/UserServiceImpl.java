@@ -34,19 +34,23 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
 
-    public User getUser(final User user) {
-        return redisTemplate.execute(new RedisCallback<User>() {
-            public User doInRedis(RedisConnection redisConnection) throws DataAccessException {
-                byte[] key = redisTemplate.getStringSerializer().serialize(user.getUserId());
-                if (redisConnection.exists(key)){
-                    byte[] value = redisConnection.get(key);
-                    String userName = redisTemplate.getStringSerializer().deserialize(value);
-
-                }
-                return null;
-            }
-        });
-//        return userMapper.getUser(user);
+    public User getUser(User user) {
+//        return redisTemplate.execute(new RedisCallback<User>() {
+//            public User doInRedis(RedisConnection redisConnection) throws DataAccessException {
+//                byte[] key = redisTemplate.getStringSerializer().serialize(user.getUserId());
+//                if (redisConnection.exists(key)){
+//                    byte[] value = redisConnection.get(key);
+//                    String userName = redisTemplate.getStringSerializer().deserialize(value);
+//                    if (userName!=null){
+//                        user.setUserName(userName);
+//                        return user;
+//                    }else{
+//                        return null;
+//                    }
+//                }
+                return userMapper.selectByPrimaryKey(user.getUserId());
+//            }
+//        });
     }
 
     public void insert(final User user) {
