@@ -2,6 +2,7 @@ package com.jf.controller.user;
 
 import com.jf.model.User;
 import com.jf.service.UserService;
+import com.octo.captcha.service.image.ImageCaptchaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -25,6 +26,9 @@ public class LoginUserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private ImageCaptchaService imageCaptchaService;
 
     /**
      * 登录验证
@@ -65,6 +69,7 @@ public class LoginUserController {
      */
     @RequestMapping("register.jhtml")
     public String register(HttpServletRequest request, ModelMap model, HttpServletResponse response, User user){
+        user.setUserType(1);
         userService.insert(user);
         return "login/login";
     }
@@ -77,8 +82,25 @@ public class LoginUserController {
      * @return
      */
     @RequestMapping("captcha.jhtml")
-    public String captcha(HttpServletRequest request, ModelMap model, HttpServletResponse response){
-        return "";
+    public String captcha(HttpServletRequest request, ModelMap model, HttpServletResponse response,String captcha,User user){
+        System.out.println(captcha);
+        System.out.println(request.getSession().getId());
+        Boolean isResponseCorrect = imageCaptchaService.validateResponseForID(request.getSession().getId(), captcha);
+        if (isResponseCorrect==true) {
+            user = userService.getUser(user);
+            if (user!=null){
+                session.setAttribute("id",user.getUserId());
+                session.setAttribute("type",user.getUserType());
+                return "index/index";
+            }else{
+                model.addAttribute("error","用户名或密码错误！");
+                return "login/login";
+            }
+        }else{
+            model.addAttribute("error","验证码错误！");
+            return "login/login";
+        }
+
     }
 
     @RequestMapping("userId.jhtml")
@@ -87,14 +109,12 @@ public class LoginUserController {
         if (user!=null){
             try {
                 response.getWriter().print("true");
-                System.out.println("true");
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }else{
             try {
                 response.getWriter().print("false");
-                System.out.println("false");
             } catch (IOException e) {
                 e.printStackTrace();
             }

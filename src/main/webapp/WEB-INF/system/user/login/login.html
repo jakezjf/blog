@@ -46,7 +46,7 @@
     </div>
     <div class="form" id="form">
         <h2>登录</h2>
-        <form action="${base!}/login/captcha.jhtml">
+        <form action="${base!}/login/captcha.jhtml" method="post">
             <input type="id" placeholder="请输入你的用户名" name="userId" id="userId"/>
             <input type="password" placeholder="请输入你的密码" name="userPassword" id="userPassword" />
             <input type="text" name="captcha" class="captcha" placeholder="验证码" id="captcha">
@@ -56,7 +56,7 @@
     </div>
     <div class="form" id="form1">
         <h2>注册</h2>
-        <form action="${base!}/login/register.jhtml">
+        <form action="${base!}/login/register.jhtml" method="post">
             <input type="id" placeholder="请输入你的用户名" onchange="insert()" name="userId" id="id1"/>
             <input type="password" placeholder="请输入你的密码" name="userPassword" id="password1"/>
             <input type="name" placeholder="请输入你的名字" name="userName" id="name1"/>
@@ -76,9 +76,9 @@
                 async:false,
             }).responseText;
             if(msg!="false"){
-                alert(msg);
+                a.value="";
+                alert("该用户名已被注册");
             }else {
-                alert(msg);
             }
         }
     }
