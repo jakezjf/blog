@@ -102,6 +102,13 @@ public class LoginUserController {
 
     }
 
+    /**
+     * Ajax调用，检测用户名是否被注册
+     * @param request
+     * @param model
+     * @param response
+     * @param user
+     */
     @RequestMapping("userId.jhtml")
     public void userId(HttpServletRequest request, ModelMap model, HttpServletResponse response,User user){
         user = userService.getUser(user);
@@ -128,6 +135,15 @@ public class LoginUserController {
     @RequestMapping("forget.jhtml")
     public String forget(){
         return "login/forget";
+    }
+
+    /**
+     * 修改密码
+     * @return
+     */
+    @RequestMapping("update.jhtml")
+    public String update(){
+        return "login/login";
     }
 
 }
