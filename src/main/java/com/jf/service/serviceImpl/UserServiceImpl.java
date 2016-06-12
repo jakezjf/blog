@@ -53,14 +53,7 @@ public class UserServiceImpl implements UserService {
         });
     }
 
-    public void insert(final User user) {
-        redisTemplate.execute(new RedisCallback<Object>() {
-            public Object doInRedis(RedisConnection redisConnection) throws DataAccessException {
-                redisConnection.set(redisTemplate.getStringSerializer().serialize(user.getUserId()),
-                        redisTemplate.getStringSerializer().serialize(user.getUserName()));
-                return null;
-            }
-        });
+    public void insert(User user) {
         userMapper.insert(user);
     }
 
@@ -84,6 +77,33 @@ public class UserServiceImpl implements UserService {
         pageSize = pageSize == null?10:pageSize;
         PageHelper.startPage(pageNo,pageSize);
         //startPage是告诉拦截器说我要开始分页了。分页参数是这两个。
+
         return null;
+    }
+
+    /**
+     * 插入
+     * @param user
+     */
+    public void insertRedis(final User user) {
+        redisTemplate.execute(new RedisCallback<Object>() {
+            public Object doInRedis(RedisConnection redisConnection) throws DataAccessException {
+                redisConnection.set(redisTemplate.getStringSerializer().serialize(user.getUserId()),
+                        redisTemplate.getStringSerializer().serialize(user.getUserName()));
+                return null;
+            }
+        });
+    }
+
+    public void updateRedis(User user) {
+
+    }
+
+    public User getUserRedis(User user) {
+        return null;
+    }
+
+    public void deleteRedis(User user) {
+
     }
 }

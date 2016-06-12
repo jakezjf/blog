@@ -83,14 +83,13 @@ public class LoginUserController {
      */
     @RequestMapping("captcha.jhtml")
     public String captcha(HttpServletRequest request, ModelMap model, HttpServletResponse response,String captcha,User user){
+        session = request.getSession();
         System.out.println(captcha);
         System.out.println(request.getSession().getId());
         Boolean isResponseCorrect = imageCaptchaService.validateResponseForID(request.getSession().getId(), captcha);
-        if (isResponseCorrect==true) {
+        if (isResponseCorrect) {
             user = userService.getUser(user);
             if (user!=null){
-                session.setAttribute("id",user.getUserId());
-                session.setAttribute("type",user.getUserType());
                 return "index/index";
             }else{
                 model.addAttribute("error","用户名或密码错误！");
@@ -119,6 +118,16 @@ public class LoginUserController {
                 e.printStackTrace();
             }
         }
+    }
+
+
+    /**
+     * 跳到忘记密码
+     * @return
+     */
+    @RequestMapping("forget.jhtml")
+    public String forget(){
+        return "login/forget";
     }
 
 }

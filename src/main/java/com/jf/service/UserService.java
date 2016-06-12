@@ -17,4 +17,13 @@ public interface UserService {
     void delete(User user);
 
     PagedResult<User> getUsers(User user,Integer pageNo,Integer pageSize);
+
+    void insertRedis(User user);
+
+    void updateRedis(User user);
+
+    User getUserRedis(User user);
+
+    void deleteRedis(User user);
+
 }
