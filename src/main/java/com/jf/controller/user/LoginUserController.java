@@ -138,6 +138,33 @@ public class LoginUserController {
     }
 
     /**
+     * 验证用户名，姓名
+     * @param request
+     * @param model
+     * @param response
+     * @param userId
+     * @param userName
+     * @param userPassword
+     * @return
+     */
+    @RequestMapping("forgetUpdate.jhtml")
+    public String forgetUpdate(HttpServletRequest request, ModelMap model, HttpServletResponse response,String userId,String userName,String userPassword){
+        User user = new User();
+        user.setUserId(userId);
+        user.setUserName(userName);
+        user = userService.getUser(user);
+        if (user!=null){
+            user.setUserPassword(userPassword);
+            userService.update(user);
+            model.addAttribute("success","修改成功！");
+            return "login/login";
+        }else {
+            model.addAttribute("error","用户名和姓名不匹配！");
+            return "login/forget";
+        }
+    }
+
+    /**
      * 修改密码
      * @return
      */

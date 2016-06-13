@@ -10,14 +10,13 @@
     <param-value>
       classpath:applicationContext.xml
       classpath:mybatis-configuration.xml
-      classpath:jcaptcha.xml
       /WEB-INF/config/jf-admin-service.xml
       /WEB-INF/config/jf-user-service.xml
       /WEB-INF/config/database-context.xml
       /WEB-INF/config/jf-admin-servlet.xml
       /WEB-INF/config/jf-user-servlet.xml
       /WEB-INF/config/redis-context.xml
-      <!-- /WEB-INF/config/jcaptcha-context.xml -->
+      /WEB-INF/config/jcaptcha-context.xml
     </param-value>
   </context-param>
 
@@ -81,16 +80,8 @@
     </init-param>
     <load-on-startup>3</load-on-startup>
   </servlet> -->
-  <!--
-    <servlet>
-       <servlet-name>DZZQcaptcha</servlet-name>
-       <servlet-class>com.jf.common.jcaptcha.JcaptchaServlet</servlet-class>
-     </servlet>
-   <servlet-mapping>
-     <servlet-name>DZZQcaptcha</servlet-name>
-     <url-pattern>/jcaptcha.jct</url-pattern>
-   </servlet-mapping>
-     <servlet-mapping>
+
+    <!-- <servlet-mapping>
        <servlet-name>redis</servlet-name>
        <url-pattern>*.re</url-pattern>
      </servlet-mapping>-->
