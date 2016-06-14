@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Jianfeng's Blog</title>
+    <meta name="viewport" content="width=device-width,initial-scale=0.8,maximum-scale=1.2" />
+    <link rel="stylesheet" href="${base!}/resources/login/css/reset.css"/>
+    <link rel="stylesheet" href="${base!}/resources/login/css/style.css"/>
+    <script src="${base!}/resources/login/js/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#toggle").click(function(){
+                $(':input','#form')
+                        .not(':button, :submit, :reset, :hidden')
+                        .val('')
+                        .removeAttr('checked')
+                        .removeAttr('selected');
+                $(':input','#form1')
+                        .not(':button, :submit, :reset, :hidden')
+                        .val('')
+                        .removeAttr('checked')
+                        .removeAttr('selected');
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        <#if error??>
+        var errmsg="${error!}" ;
+        alert(errmsg);
+        </#if>
+    </script>
+</head>
+<body>
+<div class="pen-title">
+    <h1>Jianfeng's Blog</h1>
+</div>
+<!-- Form Module-->
+<div class="module form-module">
+    <div class="toggle" id="toggle"><i class="fa fa-times fa-pencil"></i>
+        <div class="tooltip" ><span id="span1">不喜欢</span></div>
+    </div>
+    <div class="form" id="forget">
+        <h2>密码找回</h2>
+        <form action="#" method="post">
+            <input type="id" placeholder="请输入你的用户名" name="userId" id="userId" onchange="insert()"/>
+            <input type="text" placeholder="请输入你的姓名" name="userName" id="userName" />
+            <input type="password" placeholder="请输入你的密码" name="userPassword" id="password"/>
+            <button type="submit">修改</button>
+        </form>
+    </div>
+    <div class="cta"><a href="${base!}/login/login.jhtml">返回登录界面</a></div>
+</div>
+
+<script type="text/javascript">
+    function insert() {
+        var a=document.getElementById("userId");
+        if(a.value!=null && a.value!=""){
+            var msg = $.ajax({
+                type: "post",
+                url: "${base}/login/userId.jhtml?userId="+a.value,
+                async:false,
+            }).responseText;
+            if(msg!="false"){
+            }else {
+                a.value="";
+                alert("该用户名不存在");
+            }
+        }
+    }
+</script>
+
+<script src="${base!}/resources/login/js/index.js"></script>
+<script src="${base!}/resources/login/js/scripts.js"></script>
+<script src="${base!}/resources/login/js/wintrue.js"></script>
+
+</body>
+</html>
