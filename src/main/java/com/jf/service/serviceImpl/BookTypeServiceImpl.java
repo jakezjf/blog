@@ -36,7 +36,7 @@ public class BookTypeServiceImpl implements BookTypeService{
     }
 
     public List<BookType> getBookTypeList(BookType bookType) {
-        return null;
+        return bookTypeMapper.getBookTypes(bookType);
     }
 
     public PagedResult<BookType> getBookTypes(BookType bookType,Integer pageNo,Integer pageSize) {

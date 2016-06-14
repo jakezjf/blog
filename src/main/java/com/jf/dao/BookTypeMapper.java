@@ -33,4 +33,6 @@ public interface BookTypeMapper {
     void update(BookType bookType);
 
     List<BookType> getPageBookType(BookType bookType);
+
+    List<BookType> getBookTypes(BookType bookType);
 }

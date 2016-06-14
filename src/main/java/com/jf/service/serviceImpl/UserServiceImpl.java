@@ -28,9 +28,6 @@ public class UserServiceImpl implements UserService {
     @Autowired
     protected RedisTemplate<Serializable, Serializable> redisTemplate;
 
-//    @Autowired
-//    private ListOperations<String, String> listOps;
-
     @Autowired
     private UserMapper userMapper;
 

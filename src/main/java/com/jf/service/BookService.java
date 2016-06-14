@@ -21,4 +21,9 @@ public interface BookService {
 
     List<Book> getBooksAll(Book book);
 
+    void insertRedis(Book book);
+
+    void updateRedis(Book book);
+
+
 }

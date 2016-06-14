@@ -44,4 +44,12 @@ public class BookServiceImpl implements BookService {
     public List<Book> getBooksAll(Book book) {
         return bookMapper.getBookAll(book);
     }
+
+    public void insertRedis(Book book) {
+
+    }
+
+    public void updateRedis(Book book) {
+
+    }
 }
