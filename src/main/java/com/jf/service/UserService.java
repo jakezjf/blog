@@ -3,6 +3,8 @@ package com.jf.service;
 import com.jf.common.page.PagedResult;
 import com.jf.model.User;
 
+import java.util.List;
+
 /**
  * Created by JF on 2016/6/1.
  */
@@ -25,5 +27,7 @@ public interface UserService {
     User getUserRedis(User user);
 
     void deleteRedis(User user);
+
+    List<User> getUsers(User user);
 
 }

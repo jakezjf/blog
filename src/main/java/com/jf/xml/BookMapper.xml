@@ -385,7 +385,7 @@
     </if>
   </select>
 
-  <select id="getBook" resultType="com.jf.model.Book" parameterType="com.jf.model.Book" >
+  <select id="getBook" resultMap="BaseResultMap" parameterType="com.jf.model.Book" >
     select
     <include refid="Base_Column_List" />
     from book where 1=1

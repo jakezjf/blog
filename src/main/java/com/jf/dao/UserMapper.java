@@ -36,4 +36,7 @@ public interface UserMapper {
 
     List<User> getPageList(User user);
 
+    List<User> getUsers(User user);
+
+
 }

@@ -65,14 +65,11 @@
                                         <p>
                                             ${bookTypes.back1!}
                                         </p>
-
                                         <a class="readmore" href="#">获得更多</a>
                                     </div>
                                 </div><!-- End cs_article -->
                             </#list>
                         </#if>
-
-
                     </div><!-- End cs_slider -->
                 </div><!-- End cs_wrapper -->
             </div><!-- End contentslider -->
@@ -91,9 +88,6 @@
                     });
                 });
             </script>
-
-
-
         </div>   <!-- end of slider -->
         <#if books ??>
             <#list books as books>
@@ -102,9 +96,7 @@
                     <h2><a href="#">${books.bookName!}</a></h2>
 
                     <div class="post_content">
-
-                        ${books.addTime?datetime!} in <a href="#" target="_parent">${books.bookAuthor!}</a>
-
+                        <#if books.addTime ??>${books.addTime?date!}</#if> in <a href="#" target="_parent">${books.bookAuthor!}</a>
                         <a href="#"><img src="${base!}/resources/index/images/templatemo_image_01.jpg" alt="image" /></a>
                         <p><a href="#" target="_parent">templatemo.com</a> offers high quality <a href="#" target="_parent">free css templates</a> for your personal or commercial websites. All website templates are  free to download, modify and apply for your websites without any restriction. Have fun!</p>
 

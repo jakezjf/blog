@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
+import java.util.List;
 
 
 /**
@@ -102,5 +103,9 @@ public class UserServiceImpl implements UserService {
 
     public void deleteRedis(User user) {
 
+    }
+
+    public List<User> getUsers(User user) {
+        return userMapper.getUsers(user);
     }
 }

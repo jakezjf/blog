@@ -68,6 +68,9 @@ public class BookAdminController {
      */
     @RequestMapping("toUpdate.do")
     public String toUpdate(Book book,ModelMap model){
+        book = bookService.getBook(book);
+        List<BookType> bookTypes = bookTypeService.getBookTypeList(null);
+        model.addAttribute("bookTypes",bookTypes);
         model.addAttribute("book",book);
         return "book/update";
     }
@@ -78,7 +81,15 @@ public class BookAdminController {
      * @return
      */
     @RequestMapping("update.do")
-    public String update(Book book){
+    public String update(Book book,String addTimeString){
+        if (addTimeString!=null && addTimeString.equals("")==false){
+            try {
+                Date date = new SimpleDateFormat("yyyy-MM-dd").parse(addTimeString);
+                book.setAddTime(date);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
         bookService.update(book);
         return "redirect:index.do";
     }
@@ -98,15 +109,32 @@ public class BookAdminController {
      */
     @RequestMapping("add.do")
     public String add(Book book,String addTimeString){
-        try {
-            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(addTimeString);
-            book.setAddTime(date);
-        } catch (ParseException e) {
-            e.printStackTrace();
+        if (addTimeString.equals("")==false && addTimeString!=null){
+            try {
+                Date date = new SimpleDateFormat("yyyy-MM-dd").parse(addTimeString);
+                book.setAddTime(date);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
         bookService.insert(book);
         return "redirect:index.do";
     }
+
+
+    @RequestMapping("deleteAjax.do")
+    public void deleteAjax(Book book,ModelMap model){
+        bookService.delete(book);
+        List<Book> books = bookService.getBooks();
+        if (books.size()>0){
+            for (int i=0 ;i<books.size() ;i++ ){
+                if (books.get(i).getBookType()!=null && books.get(i).getBookType().equals("")==false)
+                    books.get(i).setTypeName(bookTypeService.getBookTypeName(books.get(i).getBookType()));
+            }
+        }
+        model.addAttribute("books",books);
+    }
+
 
 
 
