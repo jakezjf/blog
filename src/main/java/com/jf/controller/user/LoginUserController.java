@@ -84,8 +84,6 @@ public class LoginUserController {
     @RequestMapping("captcha.jhtml")
     public String captcha(HttpServletRequest request, ModelMap model, HttpServletResponse response,String captcha,User user){
         session = request.getSession();
-        System.out.println(captcha);
-        System.out.println(request.getSession().getId());
         Boolean isResponseCorrect = imageCaptchaService.validateResponseForID(request.getSession().getId(), captcha);
         if (isResponseCorrect) {
             user = userService.getUser(user);

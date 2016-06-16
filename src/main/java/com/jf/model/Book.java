@@ -24,6 +24,8 @@ public class Book {
     private String back3;
 
     private String back4;
+    //bookType
+    private String typeName;
 
     public Integer getBookId() {
         return bookId;
@@ -111,5 +113,13 @@ public class Book {
 
     public void setBack4(String back4) {
         this.back4 = back4 == null ? null : back4.trim();
+    }
+
+    public String getTypeName() {
+        return typeName;
+    }
+
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
     }
 }

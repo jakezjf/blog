@@ -45,4 +45,12 @@ public class BookTypeServiceImpl implements BookTypeService{
         PageHelper.startPage(pageNo,pageSize);
         return BeanUtil.toPagedResult(bookTypeMapper.getPageBookType(bookType));
     }
+
+    public BookType getBookType(BookType bookType) {
+        return bookTypeMapper.getBookType(bookType);
+    }
+
+    public String getBookTypeName(Integer bookType) {
+        return bookTypeMapper.getBookTypeName(bookType);
+    }
 }

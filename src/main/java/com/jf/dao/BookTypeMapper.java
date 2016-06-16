@@ -35,4 +35,9 @@ public interface BookTypeMapper {
     List<BookType> getPageBookType(BookType bookType);
 
     List<BookType> getBookTypes(BookType bookType);
+
+    BookType getBookType(BookType bookType);
+
+    String getBookTypeName(@Param("bookType")Integer bookType);
+
 }

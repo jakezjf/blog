@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
  * Created by JF on 2016/6/5.
  */
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/index")
 public class UserAdminController {
 
     @Autowired
@@ -28,4 +28,15 @@ public class UserAdminController {
 //
         return "user";
     }
+
+    @RequestMapping("index.do")
+    public String index(HttpServletRequest request, ModelMap model, HttpServletResponse response){
+        return "index/index";
+    }
+
+    @RequestMapping("shouye.do")
+    public String shouye(HttpServletRequest request, ModelMap model, HttpServletResponse response){
+        return "index/shouye";
+    }
+
 }

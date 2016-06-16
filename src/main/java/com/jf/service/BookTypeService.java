@@ -20,4 +20,8 @@ public interface BookTypeService {
 
     PagedResult<BookType> getBookTypes(BookType bookType,Integer pageNo,Integer pageSize);
 
+    BookType getBookType(BookType bookType);
+
+    String getBookTypeName(Integer bookType);
+
 }
