@@ -20,7 +20,6 @@ public class UserAdminController {
 
     @RequestMapping("index.do")
     public String index(){
-
         return "user/userList";
     }
 }

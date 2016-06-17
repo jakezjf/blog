@@ -29,6 +29,14 @@
         <typeAlias type="com.jf.model.BookExample" alias="BookExample"/>
         <typeAlias type="com.jf.model.BookType" alias="BookType"/>
         <typeAlias type="com.jf.model.BookTypeExample" alias="BookTypeExample"/>
+        <typeAlias type="com.jf.model.BlogType" alias="BlogType"/>
+        <typeAlias type="com.jf.model.BlogTypeExample" alias="BlogTypeExample"/>
+        <typeAlias type="com.jf.model.Blog" alias="Blog"/>
+        <typeAlias type="com.jf.model.BlogExample" alias="BlogExample"/>
+        <typeAlias type="com.jf.model.BlogComment" alias="BlogComment"/>
+        <typeAlias type="com.jf.model.BlogCommentExample" alias="BlogCommentExample"/>
+        <typeAlias type="com.jf.model.Reply" alias="Reply"/>
+        <typeAlias type="com.jf.model.ReplyExample" alias="ReplyExample"/>
     </typeAliases>
 
     <plugins>
@@ -60,6 +68,10 @@
         <mapper resource="com/jf/xml/UserMapper.xml"/>
         <mapper resource="com/jf/xml/BookMapper.xml" />
         <mapper resource="com/jf/xml/BookTypeMapper.xml"/>
+        <mapper resource="com/jf/xml/BlogMapper.xml"/>
+        <mapper resource="com/jf/xml/BlogTypeMapper.xml"/>
+        <mapper resource="com/jf/xml/ReplyMapper.xml"/>
+        <mapper resource="com/jf/xml/BlogCommentMapper.xml"/>
     </mappers>
 
 
