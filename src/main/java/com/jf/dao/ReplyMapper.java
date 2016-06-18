@@ -27,4 +27,12 @@ public interface ReplyMapper {
     int updateByPrimaryKeySelective(Reply record);
 
     int updateByPrimaryKey(Reply record);
+
+    void delete(Reply reply);
+
+    void update(Reply reply);
+
+    Reply getReply(Reply reply);
+
+    List<Reply> getReplyAll(Reply reply);
 }

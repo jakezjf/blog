@@ -41,6 +41,6 @@ public class BlogServiceImpl implements BlogService{
     }
 
     public void insert(Blog blog) {
-        blogMapper.insert(blog);
+        blogMapper.insertSelective(blog);
     }
 }

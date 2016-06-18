@@ -287,4 +287,152 @@
       back4 = #{back4,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <delete id="delete" parameterType="com.jf.model.Reply" >
+    delete from reply
+    where 1=1
+    <if test="id != null" >
+      and id = #{id,jdbcType=INTEGER}
+    </if>
+    <if test="comId != null" >
+      and com_id = #{comId,jdbcType=INTEGER}
+    </if>
+    <if test="userId != null" >
+      and user_id = #{userId,jdbcType=VARCHAR}
+    </if>
+    <if test="replyId != null" >
+      and reply_id = #{replyId,jdbcType=VARCHAR}
+    </if>
+    <if test="addTime != null" >
+      and add_time = #{addTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="good != null" >
+      and good = #{good,jdbcType=INTEGER}
+    </if>
+    <if test="back1 != null" >
+      and back1 = #{back1,jdbcType=VARCHAR}
+    </if>
+    <if test="back2 != null" >
+      and back2 = #{back2,jdbcType=VARCHAR}
+    </if>
+    <if test="back3 != null" >
+      and back3 = #{back3,jdbcType=VARCHAR}
+    </if>
+    <if test="back4 != null" >
+      and back4 = #{back4,jdbcType=VARCHAR}
+    </if>
+  </delete>
+
+
+  <update id="update" parameterType="com.jf.model.Reply" >
+    update reply
+    <set >
+      <if test="comId != null" >
+        com_id = #{comId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="replyId != null" >
+        reply_id = #{replyId,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null" >
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="good != null" >
+        good = #{good,jdbcType=INTEGER},
+      </if>
+      <if test="back1 != null" >
+        back1 = #{back1,jdbcType=VARCHAR},
+      </if>
+      <if test="back2 != null" >
+        back2 = #{back2,jdbcType=VARCHAR},
+      </if>
+      <if test="back3 != null" >
+        back3 = #{back3,jdbcType=VARCHAR},
+      </if>
+      <if test="back4 != null" >
+        back4 = #{back4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="getReply" resultMap="BaseResultMap" parameterType="com.jf.model.Reply" >
+    select
+    <include refid="Base_Column_List" />
+    from reply
+    where 1=1
+    <if test="id != null" >
+      and id = #{id,jdbcType=INTEGER}
+    </if>
+    <if test="comId != null" >
+      and com_id = #{comId,jdbcType=INTEGER}
+    </if>
+    <if test="userId != null" >
+      and user_id = #{userId,jdbcType=VARCHAR}
+    </if>
+    <if test="replyId != null" >
+      and reply_id = #{replyId,jdbcType=VARCHAR}
+    </if>
+    <if test="addTime != null" >
+      and add_time = #{addTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="good != null" >
+      and good = #{good,jdbcType=INTEGER}
+    </if>
+    <if test="back1 != null" >
+      and back1 = #{back1,jdbcType=VARCHAR}
+    </if>
+    <if test="back2 != null" >
+      and back2 = #{back2,jdbcType=VARCHAR}
+    </if>
+    <if test="back3 != null" >
+      and back3 = #{back3,jdbcType=VARCHAR}
+    </if>
+    <if test="back4 != null" >
+      and back4 = #{back4,jdbcType=VARCHAR}
+    </if>
+  </select>
+
+  <select id="getReplyAll" resultMap="BaseResultMap" parameterType="com.jf.model.Reply" >
+    select
+    <include refid="Base_Column_List" />
+    from reply
+    where 1=1
+    <if test="id != null" >
+      and id = #{id,jdbcType=INTEGER}
+    </if>
+    <if test="comId != null" >
+      and com_id = #{comId,jdbcType=INTEGER}
+    </if>
+    <if test="userId != null" >
+      and user_id = #{userId,jdbcType=VARCHAR}
+    </if>
+    <if test="replyId != null" >
+      and reply_id = #{replyId,jdbcType=VARCHAR}
+    </if>
+    <if test="addTime != null" >
+      and add_time = #{addTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="good != null" >
+      and good = #{good,jdbcType=INTEGER}
+    </if>
+    <if test="back1 != null" >
+      and back1 = #{back1,jdbcType=VARCHAR}
+    </if>
+    <if test="back2 != null" >
+      and back2 = #{back2,jdbcType=VARCHAR}
+    </if>
+    <if test="back3 != null" >
+      and back3 = #{back3,jdbcType=VARCHAR}
+    </if>
+    <if test="back4 != null" >
+      and back4 = #{back4,jdbcType=VARCHAR}
+    </if>
+  </select>
+
+
+
+
 </mapper>

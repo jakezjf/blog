@@ -27,4 +27,14 @@ public interface BlogCommentMapper {
     int updateByPrimaryKeySelective(BlogComment record);
 
     int updateByPrimaryKey(BlogComment record);
+
+    void delete(BlogComment blogComment);
+
+    void update(BlogComment blogComment);
+
+    List<BlogComment> getBlogCommentAll(BlogComment blogComment);
+
+    BlogComment getBlogComment(BlogComment blogComment);
+
+
 }

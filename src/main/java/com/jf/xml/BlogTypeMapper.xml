@@ -216,6 +216,7 @@
     </set>
     where blog_type = #{blogType,jdbcType=INTEGER}
   </update>
+
   <update id="updateByPrimaryKey" parameterType="com.jf.model.BlogType" >
     update blog_type
     set type_name = #{typeName,jdbcType=VARCHAR},
@@ -225,4 +226,78 @@
       back4 = #{back4,jdbcType=VARCHAR}
     where blog_type = #{blogType,jdbcType=INTEGER}
   </update>
+
+  <delete id="delete" parameterType="com.jf.model.BlogType" >
+    delete from blog_type
+    where 1=1
+    <if test="blogType != null" >
+      and  blog_type = #{blogType,jdbcType=INTEGER}
+    </if>
+    <if test="typeName != null" >
+      and type_name = #{typeName,jdbcType=VARCHAR}
+    </if>
+    <if test="back1 != null" >
+      and back1 = #{back1,jdbcType=VARCHAR}
+    </if>
+    <if test="back2 != null" >
+      and back2 = #{back2,jdbcType=VARCHAR}
+    </if>
+    <if test="back3 != null" >
+      and back3 = #{back3,jdbcType=VARCHAR}
+    </if>
+    <if test="back4 != null" >
+      and back4 = #{back4,jdbcType=VARCHAR}
+    </if>
+  </delete>
+
+  <select id="getBlogType" resultMap="BaseResultMap" parameterType="com.jf.model.BlogType" >
+    select
+    <include refid="Base_Column_List" />
+    from blog_type
+    where 1=1
+    <if test="blogType != null" >
+      and  blog_type = #{blogType,jdbcType=INTEGER}
+    </if>
+    <if test="typeName != null" >
+      and type_name = #{typeName,jdbcType=VARCHAR}
+    </if>
+    <if test="back1 != null" >
+      and back1 = #{back1,jdbcType=VARCHAR}
+    </if>
+    <if test="back2 != null" >
+      and back2 = #{back2,jdbcType=VARCHAR}
+    </if>
+    <if test="back3 != null" >
+      and back3 = #{back3,jdbcType=VARCHAR}
+    </if>
+    <if test="back4 != null" >
+      and back4 = #{back4,jdbcType=VARCHAR}
+    </if>
+  </select>
+
+  <select id="getBlogTypeAll" resultMap="BaseResultMap" parameterType="com.jf.model.BlogType" >
+    select
+    <include refid="Base_Column_List" />
+    from blog_type
+    where 1=1
+    <if test="blogType != null" >
+      and  blog_type = #{blogType,jdbcType=INTEGER}
+    </if>
+    <if test="typeName != null" >
+      and type_name = #{typeName,jdbcType=VARCHAR}
+    </if>
+    <if test="back1 != null" >
+      and back1 = #{back1,jdbcType=VARCHAR}
+    </if>
+    <if test="back2 != null" >
+      and back2 = #{back2,jdbcType=VARCHAR}
+    </if>
+    <if test="back3 != null" >
+      and back3 = #{back3,jdbcType=VARCHAR}
+    </if>
+    <if test="back4 != null" >
+      and back4 = #{back4,jdbcType=VARCHAR}
+    </if>
+  </select>
+
 </mapper>

@@ -27,4 +27,12 @@ public interface BlogTypeMapper {
     int updateByPrimaryKeySelective(BlogType record);
 
     int updateByPrimaryKey(BlogType record);
+
+    void delete(BlogType blogType);
+
+    void update(BlogType blogType);
+
+    BlogType getBlogType(BlogType blogType);
+
+    List<BlogType> getBlogTypeAll(BlogType blogType);
 }
