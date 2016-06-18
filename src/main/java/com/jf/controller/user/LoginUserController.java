@@ -40,8 +40,13 @@ public class LoginUserController {
     @RequestMapping("/login.jhtml")
     public String login(HttpServletRequest request, ModelMap model, HttpServletResponse response) {
         session = request.getSession();
-        if (session.getAttribute("id")!=null && session.getAttribute("id").equals("")==false){
-            return "redirect:";
+        if (session.getAttribute("type")!=null  && session.getAttribute("type").equals("")==false && session.getAttribute("id")!=null && session.getAttribute("id").equals("")==false){
+            if ((Integer)session.getAttribute("type")==2){
+                return "redirect:../index/index.do";
+            }
+            if ((Integer)session.getAttribute("type")==1){
+                return "redirect:../index/index.jhtml";
+            }
         }
         return "login/login";
     }
@@ -84,20 +89,29 @@ public class LoginUserController {
     @RequestMapping("captcha.jhtml")
     public String captcha(HttpServletRequest request, ModelMap model, HttpServletResponse response,String captcha,User user){
         session = request.getSession();
-        Boolean isResponseCorrect = imageCaptchaService.validateResponseForID(request.getSession().getId(), captcha);
-        if (isResponseCorrect) {
-            user = userService.getUser(user);
-            if (user!=null){
-                return "index/index";
+        try {
+            Boolean isResponseCorrect = imageCaptchaService.validateResponseForID(request.getSession().getId(), captcha);
+            if (isResponseCorrect) {
+                user = userService.getUser(user);
+                if (user!=null){
+                    if (user.getUserId()!=null && user.getUserId().equals("")==false){
+                        session.setAttribute("id",user.getUserId());
+                    }
+                    if (user.getUserType()!=null && user.getUserType().equals("")==false){
+                        session.setAttribute("type",user.getUserType());
+                    }
+                    return "index/index";
+                }else{
+                    model.addAttribute("error","用户名或密码错误！");
+                    return "login/login";
+                }
             }else{
-                model.addAttribute("error","用户名或密码错误！");
+                model.addAttribute("error","验证码错误！");
                 return "login/login";
             }
-        }else{
-            model.addAttribute("error","验证码错误！");
-            return "login/login";
+        }catch (Exception e){
+            return "redirect:login.jhtml";
         }
-
     }
 
     /**
@@ -109,22 +123,25 @@ public class LoginUserController {
      */
     @RequestMapping("userId.jhtml")
     public void userId(HttpServletRequest request, ModelMap model, HttpServletResponse response,User user){
-        user = userService.getUser(user);
-        if (user!=null){
-            try {
-                response.getWriter().print("true");
-            } catch (IOException e) {
-                e.printStackTrace();
+        try {
+            user = userService.getUser(user);
+            if (user!=null){
+                try {
+                    response.getWriter().print("true");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }else {
+                response.getWriter().print("false");
             }
-        }else{
+        }catch (Exception e) {
             try {
                 response.getWriter().print("false");
-            } catch (IOException e) {
-                e.printStackTrace();
+            } catch (IOException e2) {
+                e2.printStackTrace();
             }
         }
     }
-
 
     /**
      * 跳到忘记密码

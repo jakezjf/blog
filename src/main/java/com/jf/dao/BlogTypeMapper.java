@@ -35,4 +35,7 @@ public interface BlogTypeMapper {
     BlogType getBlogType(BlogType blogType);
 
     List<BlogType> getBlogTypeAll(BlogType blogType);
+
+    String getBlogTypeName(Integer blogType);
+
 }

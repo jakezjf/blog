@@ -272,4 +272,137 @@
       back4 = #{back4,jdbcType=VARCHAR}
     where com_id = #{comId,jdbcType=INTEGER}
   </update>
+
+  <select id="getBlogCommentAll" resultMap="BaseResultMap" parameterType="com.jf.model.BlogComment" >
+    select
+    <include refid="Base_Column_List" />
+    from blog_comment
+    where 1=1
+    <if test="comId != null" >
+      and com_id = #{comId,jdbcType=INTEGER}
+    </if>
+    <if test="blogId != null" >
+      and blog_id = #{blogId,jdbcType=INTEGER}
+    </if>
+    <if test="userId != null" >
+      and user_id = #{userId,jdbcType=VARCHAR}
+    </if>
+    <if test="addTime != null" >
+      and add_time = #{addTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="comInfo != null" >
+      and com_info = #{comInfo,jdbcType=VARCHAR}
+    </if>
+    <if test="back1 != null" >
+      and back1 = #{back1,jdbcType=VARCHAR}
+    </if>
+    <if test="back2 != null" >
+      and back2 = #{back2,jdbcType=VARCHAR}
+    </if>
+    <if test="back3 != null" >
+      and back3 = #{back3,jdbcType=VARCHAR}
+    </if>
+    <if test="back4 != null" >
+      and back4 = #{back4,jdbcType=VARCHAR}
+    </if>
+  </select>
+
+  <select id="getBlogComment" resultMap="BaseResultMap" parameterType="com.jf.model.BlogComment" >
+    select
+    <include refid="Base_Column_List" />
+    from blog_comment
+    where 1=1
+    <if test="comId != null" >
+      and com_id = #{comId,jdbcType=INTEGER}
+    </if>
+    <if test="blogId != null" >
+      and blog_id = #{blogId,jdbcType=INTEGER}
+    </if>
+    <if test="userId != null" >
+      and user_id = #{userId,jdbcType=VARCHAR}
+    </if>
+    <if test="addTime != null" >
+      and add_time = #{addTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="comInfo != null" >
+      and com_info = #{comInfo,jdbcType=VARCHAR}
+    </if>
+    <if test="back1 != null" >
+      and back1 = #{back1,jdbcType=VARCHAR}
+    </if>
+    <if test="back2 != null" >
+      and back2 = #{back2,jdbcType=VARCHAR}
+    </if>
+    <if test="back3 != null" >
+      and back3 = #{back3,jdbcType=VARCHAR}
+    </if>
+    <if test="back4 != null" >
+      and back4 = #{back4,jdbcType=VARCHAR}
+    </if>
+  </select>
+
+  <update id="update" parameterType="com.jf.model.BlogComment" >
+    update blog_comment
+    <set >
+      <if test="blogId != null" >
+        blog_id = #{blogId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null" >
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="comInfo != null" >
+        com_info = #{comInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="back1 != null" >
+        back1 = #{back1,jdbcType=VARCHAR},
+      </if>
+      <if test="back2 != null" >
+        back2 = #{back2,jdbcType=VARCHAR},
+      </if>
+      <if test="back3 != null" >
+        back3 = #{back3,jdbcType=VARCHAR},
+      </if>
+      <if test="back4 != null" >
+        back4 = #{back4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where com_id = #{comId,jdbcType=INTEGER}
+  </update>
+
+  <delete id="delete" parameterType="com.jf.model.BlogComment" >
+    delete from blog_comment
+    where 1=1
+    <if test="comId != null" >
+      and com_id = #{comId,jdbcType=INTEGER}
+    </if>
+    <if test="blogId != null" >
+      and blog_id = #{blogId,jdbcType=INTEGER}
+    </if>
+    <if test="userId != null" >
+      and user_id = #{userId,jdbcType=VARCHAR}
+    </if>
+    <if test="addTime != null" >
+      and add_time = #{addTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="comInfo != null" >
+      and com_info = #{comInfo,jdbcType=VARCHAR}
+    </if>
+    <if test="back1 != null" >
+      and back1 = #{back1,jdbcType=VARCHAR}
+    </if>
+    <if test="back2 != null" >
+      and back2 = #{back2,jdbcType=VARCHAR}
+    </if>
+    <if test="back3 != null" >
+      and back3 = #{back3,jdbcType=VARCHAR}
+    </if>
+    <if test="back4 != null" >
+      and back4 = #{back4,jdbcType=VARCHAR}
+    </if>
+  </delete>
+
+
 </mapper>

@@ -350,4 +350,198 @@
       back4 = #{back4,jdbcType=VARCHAR}
     where blog_id = #{blogId,jdbcType=INTEGER}
   </update>
+
+  <select id="getBlog" resultMap="BaseResultMap" parameterType="com.jf.model.Blog" >
+    select
+    <include refid="Base_Column_List" />
+    from blog
+    where 1=1
+    <if test="blogId != null" >
+      and blog_id = #{blogId,jdbcType=INTEGER}
+    </if>
+    <if test="blogName != null" >
+      and blog_name = #{blogName,jdbcType=VARCHAR}
+    </if>
+    <if test="blogType != null" >
+      and blog_type = #{blogType,jdbcType=INTEGER}
+    </if>
+    <if test="blogAuthor != null" >
+      and blog_author = #{blogAuthor,jdbcType=VARCHAR}
+    </if>
+    <if test="good != null" >
+      and good = #{good,jdbcType=INTEGER}
+    </if>
+    <if test="addTime != null" >
+      and add_time = #{addTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="img1 != null" >
+      and img1 = #{img1,jdbcType=VARCHAR}
+    </if>
+    <if test="img2 != null" >
+      and img2 = #{img2,jdbcType=VARCHAR}
+    </if>
+    <if test="img3 != null" >
+      and img3 = #{img3,jdbcType=VARCHAR}
+    </if>
+    <if test="blogInfo != null" >
+      and blog_info = #{blogInfo,jdbcType=VARCHAR}
+    </if>
+    <if test="back1 != null" >
+      and back1 = #{back1,jdbcType=VARCHAR}
+    </if>
+    <if test="back2 != null" >
+      and back2 = #{back2,jdbcType=VARCHAR}
+    </if>
+    <if test="back3 != null" >
+      and back3 = #{back3,jdbcType=VARCHAR}
+    </if>
+    <if test="back4 != null" >
+      and back4 = #{back4,jdbcType=VARCHAR}
+    </if>
+  </select>
+
+  <select id="getBlogs" resultMap="BaseResultMap" parameterType="com.jf.model.Blog" >
+    select
+    <include refid="Base_Column_List" />
+    from blog
+    where 1=1
+    <if test="blogId != null" >
+      and blog_id = #{blogId,jdbcType=INTEGER}
+    </if>
+    <if test="blogName != null" >
+      and blog_name = #{blogName,jdbcType=VARCHAR}
+    </if>
+    <if test="blogType != null" >
+      and blog_type = #{blogType,jdbcType=INTEGER}
+    </if>
+    <if test="blogAuthor != null" >
+      and blog_author = #{blogAuthor,jdbcType=VARCHAR}
+    </if>
+    <if test="good != null" >
+      and good = #{good,jdbcType=INTEGER}
+    </if>
+    <if test="addTime != null" >
+      and add_time = #{addTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="img1 != null" >
+      and img1 = #{img1,jdbcType=VARCHAR}
+    </if>
+    <if test="img2 != null" >
+      and img2 = #{img2,jdbcType=VARCHAR}
+    </if>
+    <if test="img3 != null" >
+      and img3 = #{img3,jdbcType=VARCHAR}
+    </if>
+    <if test="blogInfo != null" >
+      and blog_info = #{blogInfo,jdbcType=VARCHAR}
+    </if>
+    <if test="back1 != null" >
+      and back1 = #{back1,jdbcType=VARCHAR}
+    </if>
+    <if test="back2 != null" >
+      and back2 = #{back2,jdbcType=VARCHAR}
+    </if>
+    <if test="back3 != null" >
+      and back3 = #{back3,jdbcType=VARCHAR}
+    </if>
+    <if test="back4 != null" >
+      and back4 = #{back4,jdbcType=VARCHAR}
+    </if>
+  </select>
+
+
+  <delete id="delete" parameterType="com.jf.model.Blog" >
+    delete from blog
+    where 1=1
+    <if test="blogId != null" >
+      and blog_id = #{blogId,jdbcType=INTEGER}
+    </if>
+    <if test="blogName != null" >
+      and blog_name = #{blogName,jdbcType=VARCHAR}
+    </if>
+    <if test="blogType != null" >
+      and blog_type = #{blogType,jdbcType=INTEGER}
+    </if>
+    <if test="blogAuthor != null" >
+      and blog_author = #{blogAuthor,jdbcType=VARCHAR}
+    </if>
+    <if test="good != null" >
+      and good = #{good,jdbcType=INTEGER}
+    </if>
+    <if test="addTime != null" >
+      and add_time = #{addTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="img1 != null" >
+      and img1 = #{img1,jdbcType=VARCHAR}
+    </if>
+    <if test="img2 != null" >
+      and img2 = #{img2,jdbcType=VARCHAR}
+    </if>
+    <if test="img3 != null" >
+      and img3 = #{img3,jdbcType=VARCHAR}
+    </if>
+    <if test="blogInfo != null" >
+      and blog_info = #{blogInfo,jdbcType=VARCHAR}
+    </if>
+    <if test="back1 != null" >
+      and back1 = #{back1,jdbcType=VARCHAR}
+    </if>
+    <if test="back2 != null" >
+      and back2 = #{back2,jdbcType=VARCHAR}
+    </if>
+    <if test="back3 != null" >
+      and back3 = #{back3,jdbcType=VARCHAR}
+    </if>
+    <if test="back4 != null" >
+      and back4 = #{back4,jdbcType=VARCHAR}
+    </if>
+  </delete>
+
+
+  <update id="update" parameterType="com.jf.model.Blog" >
+    update blog
+    <set >
+      <if test="blogName != null" >
+        blog_name = #{blogName,jdbcType=VARCHAR},
+      </if>
+      <if test="blogType != null" >
+        blog_type = #{blogType,jdbcType=INTEGER},
+      </if>
+      <if test="blogAuthor != null" >
+        blog_author = #{blogAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="good != null" >
+        good = #{good,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null" >
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="img1 != null" >
+        img1 = #{img1,jdbcType=VARCHAR},
+      </if>
+      <if test="img2 != null" >
+        img2 = #{img2,jdbcType=VARCHAR},
+      </if>
+      <if test="img3 != null" >
+        img3 = #{img3,jdbcType=VARCHAR},
+      </if>
+      <if test="blogInfo != null" >
+        blog_info = #{blogInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="back1 != null" >
+        back1 = #{back1,jdbcType=VARCHAR},
+      </if>
+      <if test="back2 != null" >
+        back2 = #{back2,jdbcType=VARCHAR},
+      </if>
+      <if test="back3 != null" >
+        back3 = #{back3,jdbcType=VARCHAR},
+      </if>
+      <if test="back4 != null" >
+        back4 = #{back4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where blog_id = #{blogId,jdbcType=INTEGER}
+  </update>
+
 </mapper>

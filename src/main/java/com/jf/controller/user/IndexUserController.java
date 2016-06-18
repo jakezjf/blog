@@ -21,14 +21,10 @@ public class IndexUserController {
 
     @RequestMapping("/index.jhtml")
     public String index(HttpServletRequest request, ModelMap model, HttpServletResponse response){
-//        session = request.getSession();
-//        if (session.getAttribute("type")!=null && session.getAttribute("type").equals("")==false){
-//            if (session.getAttribute("id")!=null && session.getAttribute("id").equals("")==false){
-//
-//                model.addAttribute("id");
-//            }
-//            model.addAttribute("type",session.getAttribute("type"));
-//        }
+        session = request.getSession();
+        if (session.getAttribute("type")!=null && session.getAttribute("type").equals("")==false){
+            model.addAttribute("type",session.getAttribute("type"));
+        }
         return "index/index";
     }
 

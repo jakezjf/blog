@@ -300,4 +300,10 @@
     </if>
   </select>
 
+  <select id="getBlogTypeName" resultType="java.lang.String" parameterType="java.lang.Integer" >
+    select
+    type_name
+    from blog_type
+    where blog_type = #{blogType,jdbcType=INTEGER}
+  </select>
 </mapper>

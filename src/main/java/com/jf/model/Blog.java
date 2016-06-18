@@ -30,6 +30,7 @@ public class Blog {
     private String back3;
 
     private String back4;
+    private String typeName;
 
     public Integer getBlogId() {
         return blogId;
@@ -141,5 +142,13 @@ public class Blog {
 
     public void setBack4(String back4) {
         this.back4 = back4 == null ? null : back4.trim();
+    }
+
+    public String getTypeName() {
+        return typeName;
+    }
+
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
     }
 }
