@@ -32,23 +32,27 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
 
-    public User getUser(final User user) {
-        return redisTemplate.execute(new RedisCallback<User>() {
-            public User doInRedis(RedisConnection redisConnection) throws DataAccessException {
-                byte[] key = redisTemplate.getStringSerializer().serialize(user.getUserId());
-                if (redisConnection.exists(key)){
-                    byte[] value = redisConnection.get(key);
-                    String userName = redisTemplate.getStringSerializer().deserialize(value);
-                    if (userName!=null){
-                        user.setUserName(userName);
-                        return user;
-                    }else{
-                        return null;
-                    }
-                }
-                return userMapper.getUser(user);
-            }
-        });
+//    public User getUser(final User user) {
+//        return redisTemplate.execute(new RedisCallback<User>() {
+//            public User doInRedis(RedisConnection redisConnection) throws DataAccessException {
+//                byte[] key = redisTemplate.getStringSerializer().serialize(user.getUserId());
+//                if (redisConnection.exists(key)){
+//                    byte[] value = redisConnection.get(key);
+//                    String userName = redisTemplate.getStringSerializer().deserialize(value);
+//                    if (userName!=null){
+//                        user.setUserName(userName);
+//                        return user;
+//                    }else{
+//                        return null;
+//                    }
+//                }
+//                return userMapper.getUser(user);
+//            }
+//        });
+//    }
+
+    public User getUser(User user) {
+        return userMapper.getUser(user);
     }
 
     public void insert(User user) {
@@ -56,14 +60,18 @@ public class UserServiceImpl implements UserService {
         userMapper.insert(user);
     }
 
+//    public void update(final User user) {
+//        redisTemplate.execute(new RedisCallback<Object>() {
+//            public Object doInRedis(RedisConnection redisConnection) throws DataAccessException {
+//                redisConnection.set(redisTemplate.getStringSerializer().serialize(user.getUserId()),
+//                        redisTemplate.getStringSerializer().serialize(user.getUserName()));
+//                return null;
+//            }
+//        });
+//        userMapper.update(user);
+//    }
+
     public void update(final User user) {
-        redisTemplate.execute(new RedisCallback<Object>() {
-            public Object doInRedis(RedisConnection redisConnection) throws DataAccessException {
-                redisConnection.set(redisTemplate.getStringSerializer().serialize(user.getUserId()),
-                        redisTemplate.getStringSerializer().serialize(user.getUserName()));
-                return null;
-            }
-        });
         userMapper.update(user);
     }
 

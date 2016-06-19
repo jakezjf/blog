@@ -69,6 +69,11 @@ public class UserAdminController {
         return "redirect:index.do";
     }
 
+    @RequestMapping("delete.do")
+    public String delete(User user){
+        userService.delete(user);
+        return "redirect:index.do";
+    }
 
 
 
