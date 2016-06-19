@@ -230,6 +230,23 @@
     </if>
   </select>
 
+  <select id="getUsers" parameterType="com.jf.model.User" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from user where 1=1
+    <if test="userId != null and userId!='' " >
+      and user_id = #{userId,jdbcType=VARCHAR}
+    </if>
+    <if test="userPassword != null" >
+      and user_password = #{userPassword,jdbcType=VARCHAR}
+    </if>
+    <if test="userName != null" >
+      and user_name = #{userName,jdbcType=VARCHAR}
+    </if>
+    <if test="userType != null" >
+      and user_type = #{userType,jdbcType=INTEGER}
+    </if>
+  </select>
+
   <delete id="delete" parameterType="com.jf.model.User" >
     delete from user where 1=1
     <if test="userId != null" >

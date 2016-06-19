@@ -52,6 +52,7 @@ public class UserServiceImpl implements UserService {
     }
 
     public void insert(User user) {
+        user.setUserType(1);
         userMapper.insert(user);
     }
 
