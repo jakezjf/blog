@@ -17,13 +17,21 @@
 
         <div id="templatemo_menu">
             <ul>
-                <li><a href="/index/index.jhtml" class="current">首页</a></li>
-                <li><a href="#">技术分享</a></li>
+                <li><a href="${base!}/index/index.jhtml" class="current">首页</a></li>
+                <li><a href="${base!}/blog/index.jhtml">技术分享</a></li>
                 <li><a href="#" >项目分享</a></li>
-                <li><a href="/book/index.jhtml">推荐书籍</a></li>
-                <li><a href="#">个人信息</a></li>
-                <li><a href="/login/login.jhtml">登录/注册</a></li>
-                <li><a href="/login/logout.jhtml">退出</a></li>
+                <li><a href="${base!}/book/index.jhtml">推荐书籍</a></li>
+                <li><a href="${base!}/me/index.jhtml">个人信息</a></li>
+                <#if type ??>
+                    <#if type=1>
+                    <li><a href="${base!}/login/logout.jhtml">退出</a></li>
+                    </#if>
+                    <#if type=2>
+                        <li><a href="${base!}/index/index.do">进入后台</a></li>
+                    </#if>
+                    <#else>
+                        <li><a href="${base!}/login/login.jhtml">登录/注册</a></li>
+                </#if>
             </ul>
         </div><!-- end of templatemo_menu -->
 
@@ -32,26 +40,16 @@
             <div class="sidebar_box">
 
                 <h2>技术分享</h2>
+                <#if blogs ??>
+                    <#list blogs as blogs>
+                        <div class="news_box">
+                            <h3>题目：<a href="#">${blogs.blogName!}</a></h3>
+                            <h4>作者：<a href="#">${blogs.blogAuthor!}</a></h4>
+                            <p>${blogs.blogInfo!}</p>
+                        </div>
+                    </#list>
+                </#if>
 
-                <div class="news_box">
-                    <h3><a href="#">技术一</a></h3>
-                    <p>Cras nisl eros, elementum eu, iaculis vitae, viverra ut, ligula. Pellentesque metus. Duis dolor.</p>
-                </div>
-
-                <div class="news_box">
-                    <h3><a href="#">Donec a purus vel purus sollicitudin placerat</a></h3>
-                    <p>Nunc at sem. Sed pellentesque placerat augue. Mauris pede nisl, placerat nec, lobortis vitae, dictum sed, neque.</p>
-                </div>
-
-                <div class="news_box">
-                    <h3><a href="#">Duis nulla diam, posuere ac, varius id, ullamcorper sit amet, libero</a></h3>
-                    <p>Nam sodales, pede vel dapibus lobortis, ipsum diam molestie risus, a vulputate risus nisl pulvinar lacus.</p>
-                </div>
-
-                <div class="news_box">
-                    <h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a></h3>
-                    <p>Nulla et nunc commodo ante ornare imperdiet. Donec nunc neque, pulvinar a, vestibulum eget, luctus id, orci. </p>
-                </div>
 
             </div>
 
@@ -68,50 +66,46 @@
                     <div class="cs_slider">
 
                         <div class="cs_article">
-                            <a href="#">
-                                <img src="${base!}/resources/index/images/article01.jpg" alt="Artist's interpretation of article headline" />
+                            <a href="http://www.jianfeng95.cn/jianfeng">
+                                <img src="${base!}/resources/index/images/xiangmu/pic01.jpg" alt="毕业论文管理系统" />
                             </a>
 
                             <div class="text">
-                                <h2><a href="#" target="_parent">Project One</a></h2>
-
+                                <h2><a href="http://www.jianfeng95.cn/jianfeng" target="_parent">毕业论文管理系统</a></h2>
                                 <p>
-                                    项目介绍。
+                                    黑龙江大学 信息科学与技术学院 毕业论文管理系统！
                                 </p>
-
-                                <a class="readmore" href="#">获得更多</a>
+                                <a class="readmore" href="http://www.jianfeng95.cn/jianfeng">获取更多信息</a>
                             </div>
                         </div><!-- End cs_article -->
 
                         <div class="cs_article">
-                            <a href="#">
-                                <img src="${base!}/resources/index/images/article02.jpg" alt="Artist's interpretation of article headline" />
+                            <a href="${base!}/index/index.jhtml">
+                                <img src="${base!}/resources/index/images/xiangmu/blog.jpg" alt="个人博客系统" />
                             </a>
-
                             <div class="text">
-                                <h2> <a href="#" target="_parent">Project Two</a></h2>
+                                <h2> <a href="${base!}/index/index.jhtml" target="_parent">个人博客系统</a></h2>
 
                                 <p>
-                                    项目介绍。
+                                    个人博客系统！
                                 </p>
 
-                                <a class="readmore" href="#">获得更多</a>
+                                <a class="readmore" href="${base!}/index/index.jhtml">获取更多信息</a>
                             </div>
                         </div><!-- End cs_article -->
 
                         <div class="cs_article">
-                            <a href="#">
-                                <img src="${base!}/resources/index/images/article03.jpg" alt="Artist's interpretation of article headline" />
+                            <a href="${base!}/resources/index/images/xiangmu/ic_launcher.png">
+                                <img src="${base!}/resources/index/images/xiangmu/ic_launcher.png" alt="小医博士app" />
                             </a>
 
                             <div class="text">
-                                <h2> <a href="#" target="_parent">Project Three</a></h2>
-
+                                <h2> <a href="${base!}/resources/index/images/xiangmu/ic_launcher.png" target="_parent">小医博士app</a></h2>
                                 <p>
-                                    项目介绍。
+                                    基于Android的互联网+医疗项目！
                                 </p>
 
-                                <a class="readmore" href="#">获得更多</a>
+                                <a class="readmore" href="${base!}/resources/index/images/xiangmu/ic_launcher.png">获取更多信息</a>
                             </div>
                         </div><!-- End cs_article -->
 
@@ -134,63 +128,52 @@
                 });
             </script>
 
-
-
         </div>   <!-- end of slider -->
 
         <div class="post_section">
-
-            <h2><a href="#">Free CSS Template</a></h2>
-
+            <h2><a href="#">苏菲的世界</a></h2>
             <div class="post_content">
-
-                May 27th in <a href="#" target="_parent">Web Template</a> by <a href="#" target="_parent">templatemo.com</a>
-
-                <a href="#"><img src="${base!}/resources/index/images/templatemo_image_01.jpg" alt="image" /></a>
-                <p><a href="#" target="_parent">templatemo.com</a> offers high quality <a href="#" target="_parent">free css templates</a> for your personal or commercial websites. All website templates are  free to download, modify and apply for your websites without any restriction. Have fun!</p>
-
-                <a href="#" class="more">Continue reading...</a> | <a href="#" class="comment">Comments (124)</a>
-
+                出版时间：2007-10-01 <a href="#" target="_parent">乔斯坦·贾德</a> <a href="#" target="_parent">哲学</a>
+                <a href="#"><img src="${base!}/resources/index/images/book/shufeideshijie.jpg" alt="image" /></a><br>
+                《苏菲的世界》一书以小说的形式，通过一名哲学导师向一个叫苏菲的女孩传授哲学知识的经过，揭示了西方哲学发展的历程。
+                由前苏格拉底时代到萨特，以及亚里士多德、笛卡儿、黑格尔等人的思想都通过作者生动的笔触跃然纸上，并配以当时的历史
+                背景加以解释，引人入胜。
+                <a href="#" class="more">详细介绍</a> | <a href="#" class="comment">赞 (124)</a>
             </div>
-
         </div>
 
         <div class="post_section">
-
-            <h2><a href="#">Lorem ipsum dolor sit amet</a></h2>
-
+            <h2><a href="#">岛上书店</a></h2>
             <div class="post_content">
-
-                May 26th in <a href="#" target="_parent">Web Template</a> by <a href="#" target="_parent">templatemo.com</a>
-
-                <a href="#"><img src="${base!}/resources/index/images/templatemo_image_02.jpg" alt="image" /></a>
-
-                <p>Validate <a href="#">XHTML</a> &amp; <a href="#">CSS</a>. Vivamus vitae nibh eu sem malesuada rutrum et sit amet magna. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent aliquam velit a magna sodales quis elementum ipsum auctor. Ut at metus leo, et dictum sem.</p>
-
-                <a href="#">Continue reading...</a> | <a href="#">Comments (286)</a>
-
+                出版时间：2015-05-01 <a href="#" target="_parent">加·泽文</a> <a href="#" target="_parent">哲学</a>
+                <a href="#"><img src="${base!}/resources/index/images/book/world.jpg" alt="image" /></a><br>
+                上书店是间维多利亚风格的小屋，门廊上挂着褪色的招牌，上面写着：
+                　　没有谁是一座孤岛，每本书都是一个世界
+                　　A．J．费克里，人近中年，在一座与世隔绝的小岛上，经营一家书店。
+                　　命运从未眷顾过他，爱妻去世，书店危机，就连值钱的宝贝也遭窃。他的人生陷入僵局，他的内心沦为荒岛。
+                <a href="#" class="more">详细介绍</a> | <a href="#" class="comment">赞 (50)</a>
             </div>
-
         </div>
-
     </div> <!-- end of content -->
-
 </div> <!-- end of templatemo_wrapper -->
 
 <div id="templatemo_footer_wrapper">
     <div id="templatemo_footer">
 
         <ul class="footer_menu">
-            <li><a href="/index/index.jhtml">首页</a></li>
-            <li><a href="#">技术分享</a></li>
+            <li><a href="${base!}/index/index.jhtml">首页</a></li>
+            <li><a href="${base!}/blog/index.jhtml">技术分享</a></li>
             <li><a href="#">项目分享</a></li>
-            <li><a href="/book/index.jhtml">推荐书籍</a></li>
+            <li><a href="${base!}/book/index.jhtml">推荐书籍</a></li>
             <li><a href="#">个人信息</a></li>
-            <li><a href="/login/login.jhtml">登录/注册</a></li>
-            <li><a href="/login/logout.jhtml">退出</a></li>
+            <#if type ??>
+                <li><a href="${base!}/login/logout.jhtml">退出</a></li>
+                <#else>
+            <li><a href="${base!}/login/login.jhtml">登录/注册</a></li>
+            </#if>
         </ul>
 
-        Copyright © 2016 <a href="#">Jianfeng's Blog</a> | <a href="#" target="_parent">jianfeng995@gmail.com</a>
+        Copyright © 2016 <a href="http://www.miitbeian.gov.cn/">桂ICP备16004617号</a> | <a href="#" target="_parent">jianfeng995@gmail.com</a>
 
 
     </div> <!-- end of footer -->

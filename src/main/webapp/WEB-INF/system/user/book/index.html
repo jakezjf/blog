@@ -17,13 +17,21 @@
 
         <div id="templatemo_menu">
             <ul>
-                <li><a href="/index/index.jhtml">首页</a></li>
-                <li><a href="#">技术分享</a></li>
+                <li><a href="${base!}/index/index.jhtml">首页</a></li>
+                <li><a href="${base!}/blog/index.jhtml">技术分享</a></li>
                 <li><a href="#">项目分享</a></li>
-                <li><a href="/book/index.jhtml" class="current">推荐书籍</a></li>
-                <li><a href="#">个人信息</a></li>
-                <li><a href="/login/login.jhtml">登录/注册</a></li>
-                <li><a href="/login/logout.jhtml">退出</a></li>
+                <li><a href="${base!}/book/index.jhtml" class="current">推荐书籍</a></li>
+                <li><a href="${base!}/me/index.jhtml">个人信息</a></li>
+                <#if type ??>
+                    <#if type=1>
+                        <li><a href="${base!}/login/logout.jhtml">退出</a></li>
+                    </#if>
+                    <#if type=2>
+                        <li><a href="${base!}/index/index.do">进入后台</a></li>
+                    </#if>
+                    <#else>
+                        <li><a href="${base!}/login/login.jhtml">登录/注册</a></li>
+                </#if>
             </ul>
         </div><!-- end of templatemo_menu -->
 
@@ -34,8 +42,8 @@
                 <h2>最新书评</h2>
 
                 <div class="news_box">
-                    <h3><a href="#">技术一</a></h3>
-                    <p>Cras nisl eros, elementum eu, iaculis vitae, viverra ut, ligula. Pellentesque metus. Duis dolor.</p>
+                    <h3><a href="#">岛上书店</a></h3>
+                    <p>有趣、温柔、动人，恰如其分，又汹涌澎湃，《岛上书店》提醒了我们，为什么阅读，为什么去爱。</p>
                 </div>
 
             </div>
@@ -61,7 +69,6 @@
 
                                     <div class="text">
                                         <h2><a href="#" target="_parent">${bookTypes.typeName!}</a></h2>
-
                                         <p>
                                             ${bookTypes.back1!}
                                         </p>
@@ -92,14 +99,12 @@
         <#if books ??>
             <#list books as books>
                 <div class="post_section">
-
                     <h2><a href="#">${books.bookName!}</a></h2>
-
                     <div class="post_content">
-                        <#if books.addTime ??>${books.addTime?date!}</#if> in <a href="#" target="_parent">${books.bookAuthor!}</a>
+                        出版时间：<#if books.addTime ??>${books.addTime?date!}</#if>
+                        <a href="#" target="_parent">${books.bookAuthor!}</a> <a href="#" target="_parent">${books.typeName}</a>
                         <a href="#"><img src="${base!}/resources/index/images/templatemo_image_01.jpg" alt="image" /></a>
-                        <p><a href="#" target="_parent">templatemo.com</a> offers high quality <a href="#" target="_parent">free css templates</a> for your personal or commercial websites. All website templates are  free to download, modify and apply for your websites without any restriction. Have fun!</p>
-
+                        <p>${books.bookInfo!}</p>
                         <a href="#" class="more">查看书籍</a> | <a href="#" class="comment">赞 (${books.good!})</a>
 
                     </div>
@@ -108,25 +113,6 @@
             </#list>
         </#if>
 
-<!--
-        <div class="post_section">
-
-            <h2><a href="#">Lorem ipsum dolor sit amet</a></h2>
-
-            <div class="post_content">
-
-                May 26th in <a href="#" target="_parent">Web Template</a> by <a href="#" target="_parent">templatemo.com</a>
-
-                <a href="#"><img src="${base!}/resources/index/images/templatemo_image_02.jpg" alt="image" /></a>
-
-                <p>Validate <a href="#">XHTML</a> &amp; <a href="#">CSS</a>. Vivamus vitae nibh eu sem malesuada rutrum et sit amet magna. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent aliquam velit a magna sodales quis elementum ipsum auctor. Ut at metus leo, et dictum sem.</p>
-
-                <a href="#">Continue reading...</a> | <a href="#">Comments (286)</a>
-
-            </div>
-
-        </div>
-        -->
 
     </div> <!-- end of content -->
 
@@ -136,12 +122,21 @@
     <div id="templatemo_footer">
 
         <ul class="footer_menu">
-            <li><a href="#">首页</a></li>
-            <li><a href="#">技术分享</a></li>
+            <li><a href="${base!}/index/index.jhtml">首页</a></li>
+            <li><a href="${base!}/blog/index.jhtml">技术分享</a></li>
             <li><a href="#">项目分享</a></li>
-            <li><a href="#">推荐书籍</a></li>
-            <li><a href="#">个人信息</a></li>
-            <li><a href="#">登录/注册</a></li>
+            <li><a href="${base!}/book/index.jhtml" class="current">推荐书籍</a></li>
+            <li><a href="${base!}/me/index.jhtml">个人信息</a></li>
+            <#if type ??>
+                <#if type=1>
+                    <li><a href="${base!}/login/logout.jhtml">退出</a></li>
+                </#if>
+                <#if type=2>
+                    <li><a href="${base!}/index/index.do">进入后台</a></li>
+                </#if>
+                <#else>
+                    <li><a href="${base!}/login/login.jhtml">登录/注册</a></li>
+            </#if>
         </ul>
 
         Copyright © 2016 <a href="#">Jianfeng's Blog</a> | <a href="#" target="_parent">jianfeng995@gmail.com</a>

@@ -28,7 +28,7 @@
         <property name="defaultEncoding" value="utf-8"/>
         <property name="freemarkerVariables">
             <map>
-                <entry key="base" value=""/>
+                <entry key="base" value="/blog"/>
             </map>
         </property>
         <property name="freemarkerSettings">
