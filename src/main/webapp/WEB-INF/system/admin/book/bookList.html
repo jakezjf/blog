@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>书籍信息</title>
+    <link href="${base!}/resources/admin/blog/assets/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
+    <link href="${base!}/resources/admin/blog/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="${base!}/resources/admin/blog/assets/plugins/pace/pace-theme-big-counter.css" rel="stylesheet" />
+    <link href="${base!}/resources/admin/blog/assets/css/style.css" rel="stylesheet" />
+    <link href="${base!}/resources/admin/blog/assets/css/main-style.css" rel="stylesheet" />
+    <!-- Page-Level CSS -->
+    <link href="${base!}/resources/admin/blog/assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+</head>
+
+<body>
+<div id="page-wrapper">
+    <div class="row">
+        <!--  page header -->
+        <div class="col-lg-12">
+            <h1 class="page-header">书籍信息</h1>
+        </div>
+        <!-- end  page header -->
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- Advanced Tables -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    我的书单
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <thead>
+                            <tr>
+                                <th>书籍id</th>
+                                <th>书籍名字</th>
+                                <th>作者</th>
+                                <th>类型</th>
+                                <th>点赞</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <#if books ??>
+                                <#list books as books>
+                                    <tr class="even gradeC">
+                                        <td>${books.bookId!}</td>
+                                        <td>${books.bookName!}</td>
+                                        <td>${books.bookAuthor!}</td>
+                                        <td>${books.typeName!}</td>
+                                        <td>${books.good!}</td>
+                                        <td><a href="${base!}/book/toUpdate.do?bookId=${books.bookId!}" >修改</a>/<a href="${base!}/book/delete.do?bookId=${books.bookId!}">删除</a></td>
+                                    </tr>
+                                </#list>
+                            </#if>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+            <!--End Advanced Tables -->
+        </div>
+    </div>
+    <!-- end page-wrapper -->
+
+</div>
+<!-- end wrapper -->
+
+<!-- Core Scripts - Include with every page -->
+<script src="${base!}/resources/admin/blog/assets/plugins/jquery-1.10.2.js"></script>
+<script src="${base!}/resources/admin/blog/assets/plugins/bootstrap/bootstrap.min.js"></script>
+<script src="${base!}/resources/admin/blog/assets/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="${base!}/resources/admin/blog/assets/plugins/pace/pace.js"></script>
+<script src="${base!}/resources/admin/blog/assets/scripts/siminta.js"></script>
+<!-- Page-Level Plugin Scripts-->
+<script src="${base!}/resources/admin/blog/assets/plugins/dataTables/jquery.dataTables.js"></script>
+<script src="${base!}/resources/admin/blog/assets/plugins/dataTables/dataTables.bootstrap.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#dataTables-example').dataTable();
+    });
+</script>
+
+</body>
+
+</html>
