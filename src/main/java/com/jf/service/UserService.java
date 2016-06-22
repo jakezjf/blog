@@ -30,4 +30,8 @@ public interface UserService {
 
     List<User> getUsers(User user);
 
+    List<User> getUserSearch(User user);
+
+    List<User> getUserSearchString(String param);
+
 }

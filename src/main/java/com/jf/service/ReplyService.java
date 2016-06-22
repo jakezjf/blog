@@ -19,5 +19,9 @@ public interface ReplyService {
 
     List<Reply> getReplyAll(Reply reply);
 
+    List<Reply> getReplySearch(Reply reply);
+
+    List<Reply> getReplySearchString(String param);
+
 
 }

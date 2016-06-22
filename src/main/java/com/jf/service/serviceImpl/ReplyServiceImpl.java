@@ -38,4 +38,12 @@ public class ReplyServiceImpl implements ReplyService {
     public List<Reply> getReplyAll(Reply reply) {
         return replyMapper.getReplyAll(reply);
     }
+
+    public List<Reply> getReplySearch(Reply reply) {
+        return null;
+    }
+
+    public List<Reply> getReplySearchString(String param) {
+        return null;
+    }
 }

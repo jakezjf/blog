@@ -117,4 +117,22 @@ public class UserServiceImpl implements UserService {
     public List<User> getUsers(User user) {
         return userMapper.getUsers(user);
     }
+
+    /**
+     * 模糊搜索
+     * @param user
+     * @return
+     */
+    public List<User> getUserSearch(User user) {
+        return userMapper.getUserSearch(user);
+    }
+
+    /**
+     * 模糊搜索
+     * @param param
+     * @return
+     */
+    public List<User> getUserSearchString(String param) {
+        return userMapper.getUserSearchString(param);
+    }
 }
