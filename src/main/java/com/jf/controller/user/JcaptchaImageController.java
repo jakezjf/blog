@@ -29,6 +29,11 @@ public class JcaptchaImageController {
     @Autowired
     private ImageCaptchaService imageCaptchaService;
 
+    /**
+     * 获取验证码
+     * @param request
+     * @param response
+     */
     @RequestMapping("/captcha.do")
     public void handleRequest(HttpServletRequest request, HttpServletResponse response) {
         try {

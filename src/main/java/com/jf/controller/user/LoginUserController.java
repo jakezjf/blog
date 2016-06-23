@@ -184,7 +184,8 @@ public class LoginUserController {
      * @return
      */
     @RequestMapping("update.jhtml")
-    public String update(){
+    public String update(User user){
+        userService.update(user);
         return "login/login";
     }
 

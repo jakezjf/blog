@@ -69,6 +69,11 @@ public class UserAdminController {
         return "redirect:index.do";
     }
 
+    /**
+     * 删除用户信息
+     * @param user
+     * @return
+     */
     @RequestMapping("delete.do")
     public String delete(User user){
         userService.delete(user);

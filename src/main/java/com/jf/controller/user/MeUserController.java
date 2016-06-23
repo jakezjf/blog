@@ -30,6 +30,13 @@ public class MeUserController {
     @Autowired
     private BlogService blogService;
 
+    /**
+     * 判断session权限，如果用session则遍历博客内容
+     * @param request
+     * @param model
+     * @param response
+     * @return
+     */
     @RequestMapping("index.jhtml")
     public String index(HttpServletRequest request, ModelMap model, HttpServletResponse response){
         session = request.getSession();
@@ -50,6 +57,14 @@ public class MeUserController {
     }
 
 
+    /**
+     * 更新个人的信息
+     * @param request
+     * @param model
+     * @param response
+     * @param user
+     * @return
+     */
     @RequestMapping("update.jhtml")
     public String update(HttpServletRequest request, ModelMap model, HttpServletResponse response,User user){
             userService.update(user);

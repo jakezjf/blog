@@ -25,6 +25,13 @@ public class IndexUserController {
     @Autowired
     private BlogService blogService;
 
+    /**
+     * 项目首页，遍历项目，书籍，博客
+     * @param request
+     * @param model
+     * @param response
+     * @return
+     */
     @RequestMapping("/index.jhtml")
     public String index(HttpServletRequest request, ModelMap model, HttpServletResponse response){
         session = request.getSession();
