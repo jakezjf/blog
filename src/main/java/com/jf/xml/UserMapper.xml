@@ -280,5 +280,30 @@
     </if>
   </select>
 
+  <select id="getUserSearch" parameterType="com.jf.model.User" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from user where 1=1
+    <if test="userId != null" >
+      and user_id like %#{userId,jdbcType=VARCHAR}%
+    </if>
+    <if test="userPassword != null" >
+      and user_password like %#{userPassword,jdbcType=VARCHAR}%
+    </if>
+    <if test="userName != null" >
+      and user_name like %#{userName,jdbcType=VARCHAR}%
+    </if>
+    <if test="userType != null" >
+      and user_type like %#{userType,jdbcType=INTEGER}%
+    </if>
+  </select>
+
+  <select id="getUserSearch" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from user where 1=1
+    or user_id like %#{param,jdbcType=VARCHAR}%
+    or user_password like %#{param,jdbcType=VARCHAR}%
+    or user_name like %#{param,jdbcType=VARCHAR}%
+    or user_type like %#{param,jdbcType=VARCHAR}%
+  </select>
 
 </mapper>
