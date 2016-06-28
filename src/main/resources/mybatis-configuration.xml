@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
-        "C:\Users\JF\Desktop\mybatis3-config mapper/mybatis-3-config.dtd">
-        <!--"http://mybatis.org/dtd/mybatis-3-config.dtd"-->
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+        <!--C:\Users\JF\Desktop\mybatis3-config mapper/mybatis-3-config.dtd
+        "http://mybatis.org/dtd/mybatis-3-config.dtd"-->
 
 <configuration>
     <settings>
