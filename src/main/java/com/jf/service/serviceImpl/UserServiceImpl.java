@@ -102,8 +102,14 @@ public class UserServiceImpl implements UserService {
         });
     }
 
-    public void updateRedis(User user) {
-
+    public void updateRedis(final User user) {
+        redisTemplate.execute(new RedisCallback<Object>() {
+            public Object doInRedis(RedisConnection redisConnection) throws DataAccessException {
+                redisConnection.set(redisTemplate.getStringSerializer().serialize(user.getUserId()),
+                        redisTemplate.getStringSerializer().serialize(user.getUserName()));
+                return null;
+            }
+        });
     }
 
     public User getUserRedis(User user) {

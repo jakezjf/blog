@@ -24,4 +24,12 @@ public interface BookTypeService {
 
     String getBookTypeName(Integer bookType);
 
+    void insertRedis(BookType bookType);
+
+    void deleteRedis(BookType bookType);
+
+    void updateRedis(BookType bookType);
+
+    void getBoolTypeRedis(BookType bookType);
+
 }
