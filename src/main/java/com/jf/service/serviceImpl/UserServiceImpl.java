@@ -141,4 +141,5 @@ public class UserServiceImpl implements UserService {
     public List<User> getUserSearchString(String param) {
         return userMapper.getUserSearchString(param);
     }
+    
 }
